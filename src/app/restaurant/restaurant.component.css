@@ -1,0 +1,15 @@
+caption {
+  caption-side: top;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+thead {
+  background-color: gray;
+}
+
+th {
+  font-size: 16px;
+}
+

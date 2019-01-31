@@ -1,0 +1,18 @@
+<table class="mdl-data-table mdl-js-data-table">
+  <caption class="table_caption">
+    {{restaurant.name}}<br/>
+    {{restaurant.menuDishes[0].date}}
+  </caption>
+  <thead>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Dish</th>
+    <th class="mdl-data-table__cell--non-numeric">Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let menuDish of restaurant.menuDishes">
+    <td class="mdl-data-table__cell--non-numeric">{{menuDish.dish.name}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{menuDish.dish.price}}</td>
+  </tr>
+  </tbody>
+</table>

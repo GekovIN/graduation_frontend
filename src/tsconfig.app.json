@@ -4,6 +4,9 @@
     "outDir": "../out-tsc/app",
     "types": []
   },
+  "scripts": {
+    "start": "node %NODE_DEBUG_OPTION% server.js"
+  },
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
