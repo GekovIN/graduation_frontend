@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoginComponent } from './login/login.component';
     RegisterComponent,
     RestaurantComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

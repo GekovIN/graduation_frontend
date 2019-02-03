@@ -1,0 +1,13 @@
+<header class="mdl-layout__header">
+  <div class="mdl-layout__header-row">
+    <span class="mdl-layout-title">{{title}}</span>
+    <div class="mdl-layout-spacer"></div>
+    <nav class="mdl-navigation mdl-layout--large-screen-only">
+      <a class="mdl-navigation__link" [routerLink]="['/restaurants']">Restaurants</a>
+      <a class="mdl-navigation__link" (click)="logout()">Logout</a>
+      <span *ngIf='email'>
+          <a class="mdl-navigation__link" [routerLink]="['/login']">{{email}}</a>
+        </span>
+    </nav>
+  </div>
+</header>

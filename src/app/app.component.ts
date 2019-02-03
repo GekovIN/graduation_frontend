@@ -7,20 +7,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'Restaurants vote system';
-  email: string;
 
-  constructor(private router: Router) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.email = sessionStorage.getItem('email');
-  }
-
-  logout() {
-    sessionStorage.setItem('token', '');
-    sessionStorage.setItem('email', '');
-    this.ngOnInit();
-    this.router.navigate(['login']);
-  }
+  ngOnInit() {}
 
 }
