@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Restaurant} from "./restaurant";
 
 const apiUrl: string = 'http://localhost:8080/graduation/restaurants/';
@@ -14,7 +14,13 @@ export class RestaurantService {
 
   constructor(private http: HttpClient) {}
 
+  // loadAll(){
+  //   const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa('admin@gmail.com:admin')});
+  //   return this.http.get<Array<Restaurant>>(apiUrl + 'menus?date=' + date, { headers });
+  // }
+
   loadAll(){
-    return this.http.get<Array<Restaurant>>(apiUrl + 'menus?date=' + date);
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.get<Array<Restaurant>>(apiUrl + 'menus?date=' + date, { headers });
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "./user";
 
 @Injectable({
@@ -12,5 +12,10 @@ export class UserService {
 
   register(user: User) {
     return this.http.post("http://localhost:8080/graduation/profile/register", user);
+  }
+
+  login() {
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + sessionStorage.getItem('token')});
+    return this.http.get("http://localhost:8080/graduation/profile/login", { headers });
   }
 }

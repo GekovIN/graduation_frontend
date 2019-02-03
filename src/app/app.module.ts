@@ -10,13 +10,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     RestaurantComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
