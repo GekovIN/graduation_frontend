@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "./user";
-import {FormBuilder, Validators} from "@angular/forms";
 import {BehaviorSubject} from "rxjs";
 
 @Injectable({
@@ -16,8 +15,7 @@ export class UserService {
   currentUser = this.loggedUser.asObservable();
 
   constructor(
-    private http: HttpClient,
-    private formBuilder: FormBuilder
+    private http: HttpClient
   ) { }
 
   register(user: User) {
@@ -43,13 +41,5 @@ export class UserService {
   clearSessionStorage() {
     sessionStorage.setItem('token', '');
     this.loggedUser.next(undefined);
-  }
-
-  buildUserFormGroup() {
-    return this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.email],
-      password: ['', Validators.required]
-    });
   }
 }

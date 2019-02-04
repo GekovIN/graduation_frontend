@@ -21,7 +21,10 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.loginForm = this.userService.buildUserFormGroup();
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.email],
+      password: ['', Validators.required]
+    });
   }
 
   // convenience getter for easy access to form fields
@@ -51,4 +54,20 @@ export class LoginComponent implements OnInit {
 
   }
 
+  //Dev methods
+  admin() {
+    this.userService.login('admin@gmail.com', 'admin').subscribe(
+      () => {
+        this.userService.populateSessionStorage('admin@gmail.com', 'admin');
+        this.router.navigate(['restaurants'])
+      });
+  }
+
+  user() {
+    this.userService.login('user1@yandex.ru', 'password1').subscribe(
+      () => {
+        this.userService.populateSessionStorage('user1@yandex.ru', 'password1');
+        this.router.navigate(['restaurants'])
+      });
+  }
 }
