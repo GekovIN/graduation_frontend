@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
-import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-login',
@@ -19,16 +18,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private appComponent: AppComponent,
     private router: Router) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.email],
-      password: ['', Validators.required]
-    });
-    sessionStorage.setItem('token', '');
+    this.loginForm = this.userService.buildUserFormGroup();
   }
 
   // convenience getter for easy access to form fields
@@ -40,18 +33,17 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
+
     this.email = this.f.email.value;
     this.password = this.f.password.value;
     this.loading = true;
 
-    sessionStorage.setItem('token', btoa(this.email + ':' + this.password));
-    sessionStorage.setItem('email', this.email);
-    this.appComponent.ngOnInit();
-    this.userService.login().subscribe(
-      data => {
+    this.userService.login(this.email, this.password).subscribe(
+      () => {
+        this.userService.populateSessionStorage(this.email, this.password);
         this.router.navigate(['restaurants'])
       }, error => {
-        sessionStorage.setItem('token', '');
+        this.userService.clearSessionStorage();
         alert('Authorization failed.')
       }
     );

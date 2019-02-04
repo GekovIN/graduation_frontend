@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
-import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-register',
@@ -19,15 +18,10 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private appComponent: AppComponent,
     private router: Router) { }
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.email],
-      password: ['', Validators.required]
-    })
+    this.registerForm = this.userService.buildUserFormGroup();
   }
 
   // convenience getter for easy access to form fields
@@ -45,14 +39,13 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
 
     this.userService.register(this.registerForm.value).subscribe(
-        next => {
-          sessionStorage.setItem('token', btoa(this.email + ':' + this.password));
-          sessionStorage.setItem('email', this.email);
-          this.appComponent.ngOnInit();
+        () => {
+          this.userService.populateSessionStorage(this.email, this.password);
           this.router.navigate(['restaurants'])
         }, error => {
-          alert('Authorization failed.')
-        }
+          this.userService.clearSessionStorage();
+          alert('Authorization failed.');
+      }
     );
   }
 

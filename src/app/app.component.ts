@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -6,6 +6,11 @@ import {Router} from "@angular/router";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+@Injectable({
+  providedIn: 'root'
+})
+
 export class AppComponent implements OnInit{
 
   constructor() {}
