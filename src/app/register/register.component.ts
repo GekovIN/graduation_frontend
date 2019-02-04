@@ -8,9 +8,9 @@ import {Router} from "@angular/router";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  loading = false;
   submitted = false;
   email: string;
   password: string;
@@ -18,18 +18,21 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private router: Router) { }
+    private router: Router) {
+  }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       email: ['', Validators.email],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
+  get f() {
+    return this.registerForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -40,17 +43,23 @@ export class RegisterComponent implements OnInit {
 
     this.email = this.f.email.value;
     this.password = this.f.password.value;
-    this.loading = true;
 
     this.userService.register(this.registerForm.value).subscribe(
-        () => {
-          this.userService.populateSessionStorage(this.email, this.password);
-          this.router.navigate(['restaurants'])
-        }, error => {
-          this.userService.clearSessionStorage();
-          alert('Authorization failed.');
+      () => {
+        this.userService.populateSessionStorage(this.email, this.password);
+        this.router.navigate(['restaurants'])
+      }, error => {
+        this.userService.clearSessionStorage();
+        this.handlerError(error);
       }
     );
   }
 
+  errorMessage: string = '';
+  handlerError(error) {
+    for (let detail of error.error.details) {
+      this.errorMessage += detail + "\n";
+    }
+    alert(this.errorMessage);
+  }
 }

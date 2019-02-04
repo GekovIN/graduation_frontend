@@ -10,7 +10,6 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loading = false;
   submitted = false;
   email: string;
   password: string;
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.email],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
   }
 
@@ -39,7 +38,6 @@ export class LoginComponent implements OnInit {
 
     this.email = this.f.email.value;
     this.password = this.f.password.value;
-    this.loading = true;
 
     this.userService.login(this.email, this.password).subscribe(
       () => {
@@ -47,11 +45,15 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['restaurants'])
       }, error => {
         this.userService.clearSessionStorage();
-        alert('Authorization failed.')
+        this.handlerError(error);
       }
     );
+  }
 
-
+  handlerError(error: Response) {
+    if (error.status == 401) {
+      alert('Login failed');
+    }
   }
 
   //Dev methods
