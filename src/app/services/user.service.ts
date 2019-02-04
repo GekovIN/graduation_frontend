@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "./user";
-import {HeaderComponent} from "../header/header.component";
 import {FormBuilder, Validators} from "@angular/forms";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,13 @@ import {FormBuilder, Validators} from "@angular/forms";
 
 export class UserService {
 
+  // Creating observable data (loggedUser) to use in HeaderComponent
+  // https://medium.com/@weswhite/angular-behaviorsubject-service-60485ef064fc
+  private loggedUser = new BehaviorSubject<User>(new User('', ''));
+  currentUser = this.loggedUser.asObservable();
+
   constructor(
     private http: HttpClient,
-    private headerComponent: HeaderComponent,
     private formBuilder: FormBuilder
   ) { }
 
@@ -27,14 +31,18 @@ export class UserService {
 
   populateSessionStorage(email: string, password: string) {
     sessionStorage.setItem('token', btoa(email + ':' + password));
-    sessionStorage.setItem('email', email);
-    this.headerComponent.ngOnInit();
+    let user = new User(email, password);
+    this.updateLoggedUser(user);
+  }
+
+  // Updating observable from headerComponent data:
+  updateLoggedUser(currentUser: User) {
+    this.loggedUser.next(currentUser);
   }
 
   clearSessionStorage() {
     sessionStorage.setItem('token', '');
-    sessionStorage.setItem('email', '');
-    this.headerComponent.ngOnInit();
+    this.loggedUser.next(undefined);
   }
 
   buildUserFormGroup() {

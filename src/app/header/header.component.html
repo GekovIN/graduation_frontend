@@ -5,9 +5,7 @@
     <nav class="mdl-navigation mdl-layout--large-screen-only">
       <a class="mdl-navigation__link" [routerLink]="['/restaurants']">Restaurants</a>
       <a class="mdl-navigation__link" (click)="logout()">Logout</a>
-      <span *ngIf='email'>
-          <a class="mdl-navigation__link" [routerLink]="['/login']">{{email}}</a>
-      </span>
+      <a class="mdl-navigation__link" [routerLink]="['/login']">{{loggedUser?.email}}</a>
     </nav>
   </div>
 </header>
