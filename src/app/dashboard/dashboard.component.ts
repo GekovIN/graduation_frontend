@@ -9,12 +9,13 @@ import {RestaurantService} from "../services/restaurant.service";
 })
 export class DashboardComponent implements OnInit {
 
+  static componentPath = 'restaurants/menus';
   restaurants: Array<Restaurant>;
 
   constructor(private service: RestaurantService) { }
 
   ngOnInit() {
-    this.service.loadAll().subscribe(restaurants => {
+    this.service.loadAllWithMenuForDate().subscribe(restaurants => {
       this.restaurants = restaurants});
   }
 

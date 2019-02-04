@@ -8,10 +8,13 @@ import { AppRoutes} from "./app.routes";
 import {UserService} from "./services/user.service";
 import {HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
-import { RestaurantComponent } from './restaurant/restaurant.component';
+import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
+import { RestaurantListComponent } from './restaurants/restaurant-list/restaurant-list.component';
+import { RestaurantAddComponent } from './restaurants/restaurant-add/restaurant-add.component';
+import { RestaurantEditComponent } from './restaurants/restaurant-edit/restaurant-edit.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { HeaderComponent } from './header/header.component';
     RestaurantComponent,
     DashboardComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    RestaurantListComponent,
+    RestaurantAddComponent,
+    RestaurantEditComponent
   ],
   imports: [
     BrowserModule,
