@@ -5,6 +5,7 @@ import {LoginComponent} from "./login/login.component";
 import {RestaurantListComponent} from "./restaurants/restaurant-list/restaurant-list.component";
 import {RestaurantAddComponent} from "./restaurants/restaurant-add/restaurant-add.component";
 import {RestaurantEditComponent} from "./restaurants/restaurant-edit/restaurant-edit.component";
+import {DishListComponent} from "./dishes/dish-list/dish-list.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'restaurant-edit',
     component: RestaurantEditComponent
+  },
+  {
+    path: 'dishes',
+    component: DishListComponent
   },
   {
     path: 'login',
