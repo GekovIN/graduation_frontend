@@ -6,7 +6,7 @@ import { RegisterComponent } from './register/register.component';
 
 import { AppRoutes} from "./app.routes";
 import {UserService} from "./services/user.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -16,6 +16,7 @@ import { RestaurantListComponent } from './restaurants/restaurant-list/restauran
 import { RestaurantAddComponent } from './restaurants/restaurant-add/restaurant-add.component';
 import { RestaurantEditComponent } from './restaurants/restaurant-edit/restaurant-edit.component';
 import { DishListComponent } from './dishes/dish-list/dish-list.component';
+import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,12 @@ import { DishListComponent } from './dishes/dish-list/dish-list.component';
     ReactiveFormsModule,
     AppRoutes
   ],
-  providers: [UserService],
+  providers: [UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

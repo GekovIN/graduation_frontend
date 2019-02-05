@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Restaurant} from "./restaurant";
 
 const apiUrl: string = 'http://localhost:8080/graduation/restaurants/';
@@ -14,33 +14,27 @@ export class RestaurantService {
   constructor(private http: HttpClient) {}
 
   loadAllWithMenuForDate(){
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + sessionStorage.getItem('token')});
-    return this.http.get<Array<Restaurant>>(apiUrl + 'menus?date=' + date, { headers });
+    return this.http.get<Array<Restaurant>>(apiUrl + 'menus?date=' + date);
   }
 
   loadAll() {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + sessionStorage.getItem('token')});
-    return this.http.get<Array<Restaurant>>(apiUrl, {headers});
+    return this.http.get<Array<Restaurant>>(apiUrl);
   }
 
 // https://stackoverflow.com/questions/36458383/angular-2-http-delete-doesnt-make-network-requests
   delete(restaurant: Restaurant) {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + sessionStorage.getItem('token')});
-    return this.http.delete(apiUrl + restaurant.id, { headers });
+    return this.http.delete(apiUrl + restaurant.id);
   }
 
   create(restaurant: Restaurant) {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + sessionStorage.getItem('token')});
-    return this.http.post(apiUrl, restaurant, { headers });
+    return this.http.post(apiUrl, restaurant);
   }
 
   getById(id: number) {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + sessionStorage.getItem('token')});
-    return this.http.get<Restaurant>(apiUrl + id, { headers });
+    return this.http.get<Restaurant>(apiUrl + id);
   }
 
   update(restaurant: Restaurant) {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + sessionStorage.getItem('token')});
-    return this.http.put(apiUrl + restaurant.id, restaurant, { headers });
+    return this.http.put(apiUrl + restaurant.id, restaurant);
   }
 }
