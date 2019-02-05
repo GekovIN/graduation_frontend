@@ -17,6 +17,8 @@ import { RestaurantAddComponent } from './restaurants/restaurant-add/restaurant-
 import { RestaurantEditComponent } from './restaurants/restaurant-edit/restaurant-edit.component';
 import { DishListComponent } from './dishes/dish-list/dish-list.component';
 import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
+import { DishAddComponent } from './dishes/dish-add/dish-add.component';
+import { DishEditComponent } from './dishes/dish-edit/dish-edit.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
     RestaurantListComponent,
     RestaurantAddComponent,
     RestaurantEditComponent,
-    DishListComponent
+    DishListComponent,
+    DishAddComponent,
+    DishEditComponent
   ],
   imports: [
     BrowserModule,

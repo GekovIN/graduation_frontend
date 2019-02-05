@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Dish} from "../../services/dish";
 import {Router} from "@angular/router";
-import {RestaurantService} from "../../services/restaurant.service";
 import {DishService} from "../../services/dish.service";
+import {DishAddComponent} from "../dish-add/dish-add.component";
+import {DishEditComponent} from "../dish-edit/dish-edit.component";
 
 @Component({
   selector: 'app-dish-list',
@@ -16,7 +17,6 @@ export class DishListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private restaurantService: RestaurantService,
     private dishService: DishService
   ) { }
 
@@ -27,14 +27,18 @@ export class DishListComponent implements OnInit {
   }
 
   add() {
-
+    this.router.navigate([DishAddComponent.componentPath]);
   }
 
   delete(dish: Dish) {
-
+    this.dishService.delete(dish).subscribe(() => {
+      this.dishes = this.dishes.filter(d => d !== dish);
+    })
   }
 
   edit(dish: Dish) {
-
+    localStorage.removeItem('editDishId');
+    localStorage.setItem('editDishId', dish.id.toString());
+    this.router.navigate([DishEditComponent.componentPath]);
   }
 }

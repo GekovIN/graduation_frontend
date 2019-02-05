@@ -6,6 +6,8 @@ import {RestaurantListComponent} from "./restaurants/restaurant-list/restaurant-
 import {RestaurantAddComponent} from "./restaurants/restaurant-add/restaurant-add.component";
 import {RestaurantEditComponent} from "./restaurants/restaurant-edit/restaurant-edit.component";
 import {DishListComponent} from "./dishes/dish-list/dish-list.component";
+import {DishAddComponent} from "./dishes/dish-add/dish-add.component";
+import {DishEditComponent} from "./dishes/dish-edit/dish-edit.component";
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
   {
     path: 'dishes',
     component: DishListComponent
+  },
+  {
+    path: 'dish-add',
+    component: DishAddComponent
+  },
+  {
+    path: 'dish-edit',
+    component: DishEditComponent
   },
   {
     path: 'login',

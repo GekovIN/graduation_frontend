@@ -14,4 +14,20 @@ export class DishService {
   loadAll() {
     return this.http.get<Array<Dish>>(apiUrl);
   }
+
+  create(dish: Dish) {
+    return this.http.post(apiUrl, dish);
+  }
+
+  delete(dish: Dish) {
+    return this.http.delete(apiUrl + dish.id);
+  }
+
+  getById(id: number) {
+    return this.http.get(apiUrl + id);
+  }
+
+  update(dish: Dish) {
+    return this.http.put(apiUrl + dish.id, dish);
+  }
 }
