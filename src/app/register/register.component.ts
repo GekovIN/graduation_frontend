@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
-import {DashboardComponent} from "../dashboard/dashboard.component";
+import {DateMenuListComponent} from "../menus/date-menu-list/date-menu-list.component";
 
 @Component({
   selector: 'app-register',
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
     this.userService.register(this.registerForm.value).subscribe(
       () => {
         this.userService.populateSessionStorage(this.email, this.password);
-        this.router.navigate([DashboardComponent.componentPath])
+        this.router.navigate([DateMenuListComponent.componentPath])
       }, error => {
         this.userService.clearSessionStorage();
         this.handlerError(error);

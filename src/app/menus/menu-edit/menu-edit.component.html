@@ -1,0 +1,40 @@
+<div class="col-md-6">
+  <h2 class="text-center">Edit Menu</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="date" formControlName="date" placeholder="Date" name="date" class="form-control" id="date"
+             [ngClass]="{ 'is-invalid': submitted && f.date.errors }"/>
+      <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+        <div *ngIf="f.date.errors.required">Date is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="restaurant">Restaurant:</label>
+      <select class="form-control" formControlName="restaurant" id="restaurant" name="restaurant">
+        <option value="" selected disabled hidden>{{menu.restaurant.name}}</option>
+        <option *ngFor="let restaurant of restaurants" [ngValue]="restaurant.id">
+          {{restaurant.name}}
+        </option>
+      </select>
+      <div *ngIf="submitted && f.restaurant.errors" class="invalid-feedback">
+        <div *ngIf="f.restaurant.errors.required">Restaurant is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dish">Dish:</label>
+      <select class="form-control" formControlName="dish" id="dish" name="dish">
+        <option *ngFor="let dish of dishes" [ngValue]="dish.id">
+          {{dish.name + " $" + dish.price/100}}
+        </option>
+      </select>
+      <div *ngIf="submitted && f.dish.errors" class="invalid-feedback">
+        <div *ngIf="f.dish.errors.required">Dish is required</div>
+      </div>
+    </div>
+
+    <button class="btn btn-success">Update</button>
+  </form>
+</div>

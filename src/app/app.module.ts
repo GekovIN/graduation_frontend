@@ -9,7 +9,7 @@ import {UserService} from "./services/user.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DateMenuListComponent } from './menus/date-menu-list/date-menu-list.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { RestaurantListComponent } from './restaurants/restaurant-list/restaurant-list.component';
@@ -19,13 +19,16 @@ import { DishListComponent } from './dishes/dish-list/dish-list.component';
 import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
 import { DishAddComponent } from './dishes/dish-add/dish-add.component';
 import { DishEditComponent } from './dishes/dish-edit/dish-edit.component';
+import { MenuAddComponent } from './menus/menu-add/menu-add.component';
+import { MenuListComponent } from './menus/menu-list/menu-list.component';
+import { MenuEditComponent } from './menus/menu-edit/menu-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     RestaurantComponent,
-    DashboardComponent,
+    DateMenuListComponent,
     LoginComponent,
     HeaderComponent,
     RestaurantListComponent,
@@ -33,7 +36,10 @@ import { DishEditComponent } from './dishes/dish-edit/dish-edit.component';
     RestaurantEditComponent,
     DishListComponent,
     DishAddComponent,
-    DishEditComponent
+    DishEditComponent,
+    MenuAddComponent,
+    MenuListComponent,
+    MenuEditComponent,
   ],
   imports: [
     BrowserModule,

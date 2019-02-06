@@ -1,6 +1,6 @@
 import {RouterModule, Routes} from "@angular/router";
 import {RegisterComponent} from "./register/register.component";
-import {DashboardComponent} from "./dashboard/dashboard.component";
+import {DateMenuListComponent} from "./menus/date-menu-list/date-menu-list.component";
 import {LoginComponent} from "./login/login.component";
 import {RestaurantListComponent} from "./restaurants/restaurant-list/restaurant-list.component";
 import {RestaurantAddComponent} from "./restaurants/restaurant-add/restaurant-add.component";
@@ -8,6 +8,9 @@ import {RestaurantEditComponent} from "./restaurants/restaurant-edit/restaurant-
 import {DishListComponent} from "./dishes/dish-list/dish-list.component";
 import {DishAddComponent} from "./dishes/dish-add/dish-add.component";
 import {DishEditComponent} from "./dishes/dish-edit/dish-edit.component";
+import {MenuListComponent} from "./menus/menu-list/menu-list.component";
+import {MenuAddComponent} from "./menus/menu-add/menu-add.component";
+import {MenuEditComponent} from "./menus/menu-edit/menu-edit.component";
 
 const routes: Routes = [
   {
@@ -24,8 +27,20 @@ const routes: Routes = [
     component: RestaurantListComponent
   },
   {
-    path: 'restaurants/menus',
-    component: DashboardComponent
+    path: 'menus',
+    component: MenuListComponent
+  },
+  {
+    path: 'menu-add',
+    component: MenuAddComponent
+  },
+  {
+    path: 'menu-edit',
+    component: MenuEditComponent
+  },
+  {
+    path: 'date-menus',
+    component: DateMenuListComponent
   },
   {
     path: 'restaurant-add',

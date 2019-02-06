@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
-import {DashboardComponent} from "../dashboard/dashboard.component";
+import {DateMenuListComponent} from "../menus/date-menu-list/date-menu-list.component";
 
 @Component({
   selector: 'app-login',
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.email, this.password).subscribe(
       () => {
         this.userService.populateSessionStorage(this.email, this.password);
-        this.router.navigate([DashboardComponent.componentPath])
+        this.router.navigate([DateMenuListComponent.componentPath])
       }, error => {
         this.userService.clearSessionStorage();
         this.handlerError(error);
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     this.userService.login('admin@gmail.com', 'admin').subscribe(
       () => {
         this.userService.populateSessionStorage('admin@gmail.com', 'admin');
-        this.router.navigate([DashboardComponent.componentPath])
+        this.router.navigate([DateMenuListComponent.componentPath])
       });
   }
 
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
     this.userService.login('user1@yandex.ru', 'password1').subscribe(
       () => {
         this.userService.populateSessionStorage('user1@yandex.ru', 'password1');
-        this.router.navigate([DashboardComponent.componentPath])
+        this.router.navigate([DateMenuListComponent.componentPath])
       });
   }
 }

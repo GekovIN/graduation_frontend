@@ -1,0 +1,37 @@
+<!--<div class="mdl-grid">-->
+  <!--<div class="mdl-cell mdl-cell&#45;&#45;4-col" *ngFor="let menu of menus">-->
+    <!--<app-menu [menu]="menu"></app-menu>-->
+  <!--</div>-->
+  <!--<br/>-->
+<!--</div>-->
+<!--<button class="btn btn-primary" (click)="add()" style="margin-top: 30px; margin-left: 10px"> Add Menu Dish</button>-->
+
+
+<!--<app-menu *ngFor="let menu of menus" [menu]="menu"></app-menu>-->
+<!--<button class="btn btn-primary" (click)="add()" style="margin-top: 30px; margin-left: 10px"> Add Menu Dish</button>-->
+
+
+<table class="mdl-data-table mdl-js-data-table">
+  <caption class="table_caption">
+    <button class="btn btn-primary" (click)="add()" style="margin-top: 30px; margin-bottom: 10px"> Add Menu Dish</button>
+  </caption>
+  <thead>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Date</th>
+    <th class="mdl-data-table__cell--non-numeric">Dish</th>
+    <th class="mdl-data-table__cell--non-numeric">Restaurant</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let menu of menus">
+    <td class="mdl-data-table__cell--non-numeric">{{menu.date}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{menu.dish.name}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{menu.restaurant.name}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="delete(menu)" style="margin-top: 10px"> Delete</button>
+      <button class="btn btn-primary" (click)="edit(menu)" style="margin-top: 10px; margin-left: 10px"> Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

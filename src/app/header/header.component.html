@@ -3,6 +3,8 @@
     <span class="mdl-layout-title">{{title}}</span>
     <div class="mdl-layout-spacer"></div>
     <nav class="mdl-navigation mdl-layout--large-screen-only">
+      <a class="mdl-navigation__link" [routerLink]="['/date-menus']">Date Menus</a>
+      <a class="mdl-navigation__link" [routerLink]="['/menus']">Menus</a>
       <a class="mdl-navigation__link" [routerLink]="['/restaurants']">Restaurants</a>
       <a class="mdl-navigation__link" [routerLink]="['/dishes']">Dishes</a>
       <a class="mdl-navigation__link" (click)="logout()">Logout</a>
