@@ -6,13 +6,13 @@
   <thead>
   <tr>
     <th class="mdl-data-table__cell--non-numeric">Dish</th>
-    <th class="mdl-data-table__cell--non-numeric">Price</th>
+    <th class="mdl-data-table__cell--non-numeric" style="width: 30%">Price</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let menuDish of restaurant.menuDishes">
     <td class="mdl-data-table__cell--non-numeric">{{menuDish.dish.name}}</td>
-    <td class="mdl-data-table__cell--non-numeric">{{menuDish.dish.price}}</td>
+    <td class="mdl-data-table__cell--non-numeric">$ {{menuDish.dish.price/100}}</td>
   </tr>
   </tbody>
 </table>

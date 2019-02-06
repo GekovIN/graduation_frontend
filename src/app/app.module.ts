@@ -22,6 +22,8 @@ import { DishEditComponent } from './dishes/dish-edit/dish-edit.component';
 import { MenuAddComponent } from './menus/menu-add/menu-add.component';
 import { MenuListComponent } from './menus/menu-list/menu-list.component';
 import { MenuEditComponent } from './menus/menu-edit/menu-edit.component';
+import { MenuControllerComponent } from './menus/menu-controll/menu-controller.component';
+import { MenuListByDateComponent } from './menus/menu-list-by-date/menu-list-by-date.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { MenuEditComponent } from './menus/menu-edit/menu-edit.component';
     MenuAddComponent,
     MenuListComponent,
     MenuEditComponent,
+    MenuControllerComponent,
+    MenuListByDateComponent,
   ],
   imports: [
     BrowserModule,

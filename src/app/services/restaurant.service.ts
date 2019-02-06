@@ -37,4 +37,8 @@ export class RestaurantService {
   update(restaurant: Restaurant) {
     return this.http.put(apiUrl + restaurant.id, restaurant);
   }
+
+  loadAllWithMenuByDate(date: string) {
+    return this.http.get<Array<Restaurant>>(apiUrl + 'menus?date=' + date);
+  }
 }
