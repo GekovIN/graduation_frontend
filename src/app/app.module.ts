@@ -8,7 +8,7 @@ import { AppRoutes} from "./app.routes";
 import {UserService} from "./services/user.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
-import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
+import { RestaurantComponent } from './restaurants/restaurant-menu/restaurant.component';
 import { DateMenuListComponent } from './menus/date-menu-list/date-menu-list.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';

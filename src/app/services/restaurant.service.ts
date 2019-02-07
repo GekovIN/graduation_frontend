@@ -41,4 +41,8 @@ export class RestaurantService {
   loadAllWithMenuByDate(date: string) {
     return this.http.get<Array<Restaurant>>(apiUrl + 'menus?date=' + date);
   }
+
+  loadVotesCountByIdAndDate(id: number, date: string) {
+    return this.http.get<number>('http://localhost:8080/graduation/votes/count?id=' + id + '&date=' + date);
+  }
 }

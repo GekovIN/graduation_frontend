@@ -1,5 +1,6 @@
-<div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--2-col" *ngFor="let restaurant of restaurantsWithMenu">
-    <app-restaurant [restaurant]="restaurant"></app-restaurant>
+<div>
+  <div *ngFor="let restaurant of restaurantsWithMenu">
+    <app-restaurant-menu [restaurant]="restaurant" [date]="restaurant.menuDishes[0].date"></app-restaurant-menu>
+    <button class="btn btn-primary" (click)="vote(restaurant.id)" style="margin-top: 30px; margin-bottom: 10px"> Vote</button>
   </div>
 </div>

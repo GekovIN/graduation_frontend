@@ -6,7 +6,7 @@
   <thead>
   <tr>
     <th class="mdl-data-table__cell--non-numeric">Dish</th>
-    <th class="mdl-data-table__cell--non-numeric" style="width: 30%">Price</th>
+    <th class="mdl-data-table__cell--non-numeric" style="width: 10%">Price</th>
   </tr>
   </thead>
   <tbody>
@@ -16,3 +16,6 @@
   </tr>
   </tbody>
 </table>
+<div style="margin-top: 10px">
+  <span *ngIf="votesCount" style="font-size: 16px;">Votes count: {{votesCount}}</span>
+</div>
