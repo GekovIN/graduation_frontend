@@ -24,6 +24,10 @@ import { MenuListComponent } from './menus/menu-list/menu-list.component';
 import { MenuEditComponent } from './menus/menu-edit/menu-edit.component';
 import { MenuControllerComponent } from './menus/menu-controll/menu-controller.component';
 import { MenuListByDateComponent } from './menus/menu-list-by-date/menu-list-by-date.component';
+import { VoteControllerComponent } from './votes/vote-controller/vote-controller.component';
+import { VoteListComponent } from './votes/vote-list/vote-list.component';
+import { VoteListByDateComponent } from './votes/vote-list-by-date/vote-list-by-date.component';
+import { RestaurantVoteComponent } from './restaurants/restaurant-vote/restaurant-vote.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,10 @@ import { MenuListByDateComponent } from './menus/menu-list-by-date/menu-list-by-
     MenuEditComponent,
     MenuControllerComponent,
     MenuListByDateComponent,
+    VoteControllerComponent,
+    VoteListComponent,
+    VoteListByDateComponent,
+    RestaurantVoteComponent,
   ],
   imports: [
     BrowserModule,

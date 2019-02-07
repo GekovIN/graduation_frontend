@@ -1,0 +1,13 @@
+<div>
+  <h2 style="margin-bottom: 50px">Vote controller</h2>
+  <form class="form-inline" [formGroup]="dateFilterForm" (ngSubmit)="showByDate()">
+    <div>
+      <label for="date" style="margin-bottom: 10px; font-size: 16px;">Choose date:</label>
+      <input type="date" formControlName="date" name="date" class="form-control" id="date" style="width: 200px"/>
+      <button class="btn btn-success" style="margin-left: 10px" (click)="showByDate()">Show</button>
+    </div>
+  </form>
+
+  <button class="btn btn-success" (click)="showAll()" style="margin-top: 30px">Show all votes</button><br/>
+
+</div>

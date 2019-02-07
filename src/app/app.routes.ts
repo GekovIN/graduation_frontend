@@ -13,6 +13,9 @@ import {MenuAddComponent} from "./menus/menu-add/menu-add.component";
 import {MenuEditComponent} from "./menus/menu-edit/menu-edit.component";
 import {MenuControllerComponent} from "./menus/menu-controll/menu-controller.component";
 import {MenuListByDateComponent} from "./menus/menu-list-by-date/menu-list-by-date.component";
+import {VoteListComponent} from "./votes/vote-list/vote-list.component";
+import {VoteListByDateComponent} from "./votes/vote-list-by-date/vote-list-by-date.component";
+import {VoteControllerComponent} from "./votes/vote-controller/vote-controller.component";
 
 const routes: Routes = [
   {
@@ -74,9 +77,22 @@ const routes: Routes = [
     component: DishEditComponent
   },
   {
+    path: 'vote-controller',
+    component: VoteControllerComponent
+  },
+  {
+    path: 'votes',
+    component: VoteListComponent
+  },
+  {
+    path: 'votes/:date',
+    component: VoteListByDateComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
+
 
 ];
 

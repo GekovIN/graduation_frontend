@@ -45,4 +45,8 @@ export class RestaurantService {
   loadVotesCountByIdAndDate(id: number, date: string) {
     return this.http.get<number>('http://localhost:8080/graduation/votes/count?id=' + id + '&date=' + date);
   }
+
+  loadAllWithVoteByDate(date: string) {
+    return this.http.get<Array<Restaurant>>(apiUrl + 'votes?date=' + date);
+  }
 }

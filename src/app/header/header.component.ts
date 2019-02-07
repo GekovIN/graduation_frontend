@@ -1,7 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../services/user.service";
-import {User} from "../services/user";
+import {LoggedUser} from "../services/loggedUser";
 
 @Component({
   selector: 'app-header',
@@ -16,7 +16,7 @@ import {User} from "../services/user";
 export class HeaderComponent implements OnInit {
 
   title = 'Restaurants vote system';
-  loggedUser: User;
+  loggedUser: LoggedUser;
 
   constructor(private router: Router,
               private userService: UserService) {}

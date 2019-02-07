@@ -1,0 +1,16 @@
+<table class="mdl-data-table mdl-js-data-table">
+  <thead>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Date</th>
+    <th class="mdl-data-table__cell--non-numeric">User</th>
+    <th class="mdl-data-table__cell--non-numeric">Restaurant</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let vote of votes">
+    <td class="mdl-data-table__cell--non-numeric">{{vote.date}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{vote.user.email}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{vote.restaurant.name}}</td>
+  </tr>
+  </tbody>
+</table>

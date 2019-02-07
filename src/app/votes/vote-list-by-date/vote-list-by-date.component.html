@@ -1,0 +1,7 @@
+<div>
+  <h2>Votes:</h2>
+  <div *ngFor="let restaurant of restaurants">
+    <app-restaurant-vote [restaurant]="restaurant"></app-restaurant-vote>
+    <br/>
+  </div>
+</div>

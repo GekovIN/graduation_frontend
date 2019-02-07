@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {User} from "./user";
+import {LoggedUser} from "./loggedUser";
 import {BehaviorSubject} from "rxjs";
 
 @Injectable({
@@ -11,14 +11,14 @@ export class UserService {
 
   // Creating observable data (loggedUser) to use in HeaderComponent
   // https://medium.com/@weswhite/angular-behaviorsubject-service-60485ef064fc
-  private loggedUser = new BehaviorSubject<User>(new User('', ''));
+  private loggedUser = new BehaviorSubject<LoggedUser>(new LoggedUser('', ''));
   currentUser = this.loggedUser.asObservable();
 
   constructor(
     private http: HttpClient
   ) { }
 
-  register(user: User) {
+  register(user: LoggedUser) {
     return this.http.post("http://localhost:8080/graduation/profile/register", user);
   }
 
@@ -29,12 +29,12 @@ export class UserService {
 
   populateSessionStorage(email: string, password: string) {
     sessionStorage.setItem('token', btoa(email + ':' + password));
-    let user = new User(email, password);
+    let user = new LoggedUser(email, password);
     this.updateLoggedUser(user);
   }
 
   // Updating observable from headerComponent data:
-  updateLoggedUser(currentUser: User) {
+  updateLoggedUser(currentUser: LoggedUser) {
     this.loggedUser.next(currentUser);
   }
 
