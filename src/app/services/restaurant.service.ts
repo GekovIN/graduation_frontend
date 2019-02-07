@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {Restaurant} from "./restaurant";
 
 const apiUrl: string = 'http://localhost:8080/graduation/restaurants/';
-const date: string = '2018-10-31';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,10 @@ export class RestaurantService {
   constructor(private http: HttpClient) {}
 
   loadAllWithMenuForDate(){
-    return this.http.get<Array<Restaurant>>(apiUrl + 'menus?date=' + date);
+    let currentDate = new Date();
+    // let dateParam = currentDate.getFullYear() + '-' + (currentDate.getMonth()+1) + '-' + currentDate.getDate();
+    let dateParam = currentDate.toISOString().slice(0, 10);
+    return this.http.get<Array<Restaurant>>(apiUrl + 'menus?date=' + dateParam);
   }
 
   loadAll() {

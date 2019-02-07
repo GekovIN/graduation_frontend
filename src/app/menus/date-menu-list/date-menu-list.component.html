@@ -3,4 +3,6 @@
     <app-restaurant-menu [restaurant]="restaurant" [date]="restaurant.menuDishes[0].date"></app-restaurant-menu>
     <button class="btn btn-primary" (click)="vote(restaurant.id)" style="margin-top: 30px; margin-bottom: 10px"> Vote</button>
   </div>
+  <br/>
+  <span style="font-size: 16px">You voted for: {{currentVote}}</span>
 </div>

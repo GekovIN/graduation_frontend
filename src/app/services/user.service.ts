@@ -39,7 +39,8 @@ export class UserService {
   }
 
   clearSessionStorage() {
-    sessionStorage.setItem('token', '');
+    sessionStorage.clear();
+    localStorage.clear();
     this.loggedUser.next(undefined);
   }
 }
