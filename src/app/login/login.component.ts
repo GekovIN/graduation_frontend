@@ -41,8 +41,11 @@ export class LoginComponent implements OnInit {
     this.password = this.f.password.value;
 
     this.userService.login(this.email, this.password).subscribe(
-      () => {
+      user => {
         this.userService.populateSessionStorage(this.email, this.password);
+        //https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
+        console.log('### Logged user: ' + JSON.stringify(user));
+        sessionStorage.setItem('loggedUser', JSON.stringify(user));
         this.router.navigate([DateMenuListComponent.componentPath])
       }, error => {
         this.userService.clearSessionStorage();
@@ -60,16 +63,22 @@ export class LoginComponent implements OnInit {
   //Dev methods
   admin() {
     this.userService.login('admin@gmail.com', 'admin').subscribe(
-      () => {
+      user => {
         this.userService.populateSessionStorage('admin@gmail.com', 'admin');
+        //https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
+        console.log('### Logged user: ' + JSON.stringify(user));
+        sessionStorage.setItem('loggedUser', JSON.stringify(user));
         this.router.navigate([DateMenuListComponent.componentPath])
       });
   }
 
   user() {
     this.userService.login('user1@yandex.ru', 'password1').subscribe(
-      () => {
+      user => {
         this.userService.populateSessionStorage('user1@yandex.ru', 'password1');
+        //https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
+        console.log('### Logged user: ' + JSON.stringify(user));
+        sessionStorage.setItem('loggedUser', JSON.stringify(user));
         this.router.navigate([DateMenuListComponent.componentPath])
       });
   }
