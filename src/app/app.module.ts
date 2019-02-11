@@ -28,6 +28,10 @@ import { VoteControllerComponent } from './votes/vote-controller/vote-controller
 import { VoteListComponent } from './votes/vote-list/vote-list.component';
 import { VoteListByDateComponent } from './votes/vote-list-by-date/vote-list-by-date.component';
 import { RestaurantVoteComponent } from './restaurants/restaurant-vote/restaurant-vote.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserProfileComponent } from './users/user-profile/user-profile.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
+import { UserControllerComponent } from './users/user-controller/user-controller.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,10 @@ import { RestaurantVoteComponent } from './restaurants/restaurant-vote/restauran
     VoteListComponent,
     VoteListByDateComponent,
     RestaurantVoteComponent,
+    UserListComponent,
+    UserProfileComponent,
+    UserEditComponent,
+    UserControllerComponent,
   ],
   imports: [
     BrowserModule,

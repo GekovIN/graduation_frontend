@@ -1,0 +1,24 @@
+<table class="mdl-data-table mdl-js-data-table">
+  <thead>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Email</th>
+    <th class="mdl-data-table__cell--non-numeric">Name</th>
+    <th class="mdl-data-table__cell--non-numeric">Enabled</th>
+    <th class="mdl-data-table__cell--non-numeric">Roles</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users; let i = index">
+    <td class="mdl-data-table__cell--non-numeric">{{user.email}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{user.name}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{user.enabled}}</td>
+    <!--<td class="mdl-data-table__cell&#45;&#45;non-numeric">{{user.roles}}</td>-->
+    <td class="mdl-data-table__cell--non-numeric">{{roles(i)}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="delete(user)" style="margin-top: 10px"> Delete</button>
+      <button class="btn btn-primary" (click)="edit(user)" style="margin-top: 10px; margin-left: 10px"> Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

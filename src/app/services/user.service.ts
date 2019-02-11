@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoggedUser} from "./loggedUser";
-import {BehaviorSubject} from "rxjs";
 import {User} from "./user";
 
 @Injectable({
@@ -40,5 +39,21 @@ export class UserService {
   clearSessionStorage() {
     sessionStorage.clear();
     localStorage.clear();
+  }
+
+  loadByEmail(email: string) {
+    return this.http.get<User>("http://localhost:8080/graduation/admin/users/by?email=" + email.toLowerCase());
+  }
+
+  adminUpdate(user: User) {
+    return this.http.put<User>("http://localhost:8080/graduation/admin/users/" + user.id, user);
+  }
+
+  loadAll() {
+    return this.http.get<Array<User>>("http://localhost:8080/graduation/admin/users");
+  }
+
+  delete(id: number) {
+    return this.http.delete("http://localhost:8080/graduation/admin/users/" + id);
   }
 }

@@ -8,6 +8,7 @@
       <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/vote-controller']">Vote controller</a>
       <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/restaurants']">Restaurants</a>
       <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/dishes']">Dishes</a>
+      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/user-controller']">User controller</a>
       <a class="mdl-navigation__link" (click)="logout()">Logout</a>
       <a class="mdl-navigation__link" [routerLink]="['/login']">{{loggedUser?.email}}</a>
     </nav>

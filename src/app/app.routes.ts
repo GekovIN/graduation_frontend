@@ -16,6 +16,10 @@ import {MenuListByDateComponent} from "./menus/menu-list-by-date/menu-list-by-da
 import {VoteListComponent} from "./votes/vote-list/vote-list.component";
 import {VoteListByDateComponent} from "./votes/vote-list-by-date/vote-list-by-date.component";
 import {VoteControllerComponent} from "./votes/vote-controller/vote-controller.component";
+import {UserControllerComponent} from "./users/user-controller/user-controller.component";
+import {UserListComponent} from "./users/user-list/user-list.component";
+import {UserEditComponent} from "./users/user-edit/user-edit.component";
+import {UserProfileComponent} from "./users/user-profile/user-profile.component";
 
 const routes: Routes = [
   {
@@ -83,6 +87,22 @@ const routes: Routes = [
   {
     path: 'votes',
     component: VoteListComponent
+  },
+  {
+    path: 'user-controller',
+    component: UserControllerComponent
+  },
+  {
+    path: 'user-list',
+    component: UserListComponent
+  },
+  {
+    path: 'user-edit',
+    component: UserEditComponent
+  },
+  {
+    path: 'user-profile',
+    component: UserProfileComponent
   },
   {
     path: 'votes/:date',

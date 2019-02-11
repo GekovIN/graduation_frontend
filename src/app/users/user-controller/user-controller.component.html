@@ -1,0 +1,13 @@
+<div>
+  <h2 style="margin-bottom: 50px">User controller</h2>
+  <form class="form-inline" [formGroup]="emailFilterForm" (ngSubmit)="showByEmail()">
+    <div>
+      <label for="email" style="margin-bottom: 10px; font-size: 16px;">Search by email:</label>
+      <input type="email" formControlName="email" name="email" class="form-control" id="email" style="width: 200px"/>
+      <button class="btn btn-success" style="margin-left: 10px">Search</button>
+    </div>
+  </form>
+
+  <button class="btn btn-success" (click)="showAll()" style="margin-top: 30px">Show all users</button><br/>
+
+</div>
