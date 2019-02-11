@@ -46,8 +46,9 @@ export class RegisterComponent implements OnInit {
     this.password = this.f.password.value;
 
     this.userService.register(this.registerForm.value).subscribe(
-      () => {
+      user => {
         this.userService.populateSessionStorage(this.email, this.password);
+        sessionStorage.setItem('loggedUser', JSON.stringify(user));
         this.router.navigate([DateMenuListComponent.componentPath])
       }, error => {
         this.userService.clearSessionStorage();

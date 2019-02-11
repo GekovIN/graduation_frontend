@@ -10,7 +10,7 @@
       <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/dishes']">Dishes</a>
       <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/user-controller']">User controller</a>
       <a class="mdl-navigation__link" (click)="logout()">Logout</a>
-      <a class="mdl-navigation__link" [routerLink]="['/login']">{{loggedUser?.email}}</a>
+      <a class="mdl-navigation__link" [routerLink]="['/profile']">{{loggedUser?.email}}</a>
     </nav>
   </div>
 </header>

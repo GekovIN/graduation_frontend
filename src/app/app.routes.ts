@@ -101,7 +101,7 @@ const routes: Routes = [
     component: UserEditComponent
   },
   {
-    path: 'user-profile',
+    path: 'profile',
     component: UserProfileComponent
   },
   {

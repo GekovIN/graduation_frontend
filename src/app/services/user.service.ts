@@ -56,4 +56,12 @@ export class UserService {
   delete(id: number) {
     return this.http.delete("http://localhost:8080/graduation/admin/users/" + id);
   }
+
+  loadProfile() {
+    return this.http.get<User>("http://localhost:8080/graduation/profile");
+  }
+
+  profileUpdate(profile: User) {
+    return this.http.put("http://localhost:8080/graduation/profile", profile);
+  }
 }
