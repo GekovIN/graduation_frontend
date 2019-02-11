@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {RestaurantService} from "../../services/restaurant.service";
-import {RestaurantListComponent} from "../../restaurants/restaurant-list/restaurant-list.component";
 import {Restaurant} from "../../services/restaurant";
 import {Dish} from "../../services/dish";
 import {DishService} from "../../services/dish.service";
 import {MenuService} from "../../services/menu.service";
-import {MenuListComponent} from "../menu-list/menu-list.component";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-menu-add',
@@ -15,8 +14,6 @@ import {MenuListComponent} from "../menu-list/menu-list.component";
   styleUrls: ['./menu-add.component.css']
 })
 export class MenuAddComponent implements OnInit {
-
-  static componentPath = 'menu-add';
 
   private restaurants: Restaurant[];
   private dishes: Dish[];
@@ -57,7 +54,7 @@ export class MenuAddComponent implements OnInit {
     this.submitted = true;
     this.menuService.create(this.addForm.value).subscribe(
       () => {
-        this.router.navigate([MenuListComponent.componentPath])
+        this.router.navigate([AppRoutesPaths.menuListPath])
       }
     )
   }

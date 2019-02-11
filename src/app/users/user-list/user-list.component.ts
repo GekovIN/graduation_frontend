@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../services/user";
 import {UserService} from "../../services/user.service";
-import {UserEditComponent} from "../user-edit/user-edit.component";
 import {Router} from "@angular/router";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-user-list',
@@ -34,7 +34,7 @@ export class UserListComponent implements OnInit {
   edit(user: User) {
     localStorage.removeItem('userEditEmail');
     localStorage.setItem('userEditEmail', user.email);
-    this.router.navigate([UserEditComponent.componentPath])
+    this.router.navigate([AppRoutesPaths.userEditPath])
   }
 
   roles(index: number): string {

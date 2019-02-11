@@ -9,7 +9,6 @@ import {Restaurant} from "../../services/restaurant";
   styleUrls: ['./menu-list-by-date.component.css']
 })
 export class MenuListByDateComponent implements OnInit {
-  static componentPath = '/menus';
   private date;
   private restaurants: Array<Restaurant>;
 

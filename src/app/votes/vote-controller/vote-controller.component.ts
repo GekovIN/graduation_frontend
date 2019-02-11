@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {VoteListComponent} from "../vote-list/vote-list.component";
-import {VoteListByDateComponent} from "../vote-list-by-date/vote-list-by-date.component";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-vote-controller',
@@ -11,7 +10,6 @@ import {VoteListByDateComponent} from "../vote-list-by-date/vote-list-by-date.co
 })
 export class VoteControllerComponent implements OnInit {
 
-  static componentPath = 'vote-controller';
   private dateFilterForm: FormGroup;
   private date;
 
@@ -20,7 +18,6 @@ export class VoteControllerComponent implements OnInit {
 
   ) { }
 
-
   ngOnInit(): void {
     this.dateFilterForm = new FormGroup({date: new FormControl()})
   }
@@ -28,11 +25,11 @@ export class VoteControllerComponent implements OnInit {
   showByDate() {
     this.date = this.dateFilterForm.controls.date.value;
     // https://stackoverflow.com/questions/44864303/send-data-through-routing-paths-in-angular
-    this.router.navigate([VoteListByDateComponent.componentPath, this.date])
+    this.router.navigate([AppRoutesPaths.voteListByDatePath, this.date])
   }
 
   showAll() {
-    this.router.navigate([VoteListComponent.componentPath])
+    this.router.navigate([AppRoutesPaths.voteListPath])
   }
 
 }

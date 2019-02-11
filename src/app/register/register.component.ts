@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
-import {DateMenuListComponent} from "../menus/date-menu-list/date-menu-list.component";
+import {AppRoutesPaths} from "../app.routes.paths";
 
 @Component({
   selector: 'app-register',
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
       user => {
         this.userService.populateSessionStorage(this.email, this.password);
         sessionStorage.setItem('loggedUser', JSON.stringify(user));
-        this.router.navigate([DateMenuListComponent.componentPath])
+        this.router.navigate([AppRoutesPaths.dateMenuListPath])
       }, error => {
         this.userService.clearSessionStorage();
         this.handlerError(error);

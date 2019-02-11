@@ -5,6 +5,7 @@ import {first} from "rxjs/operators";
 import {Dish} from "../../services/dish";
 import {DishService} from "../../services/dish.service";
 import {DishListComponent} from "../dish-list/dish-list.component";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-dish-edit',
@@ -12,7 +13,6 @@ import {DishListComponent} from "../dish-list/dish-list.component";
   styleUrls: ['./dish-edit.component.css']
 })
 export class DishEditComponent implements OnInit {
-  static componentPath = 'dish-edit';
 
   dish: Dish;
   editForm: FormGroup;
@@ -49,6 +49,6 @@ export class DishEditComponent implements OnInit {
     this.submitted = true;
     this.service.update(this.editForm.value)
       .pipe(first())
-      .subscribe(() => this.router.navigate([DishListComponent.componentPath]))
+      .subscribe(() => this.router.navigate([AppRoutesPaths.dishListPath]))
   }
 }

@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {UserService} from "../services/user.service";
 import {LoggedUser} from "../services/loggedUser";
 import {User} from "../services/user";
+import {AppRoutesPaths} from "../app.routes.paths";
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,13 @@ import {User} from "../services/user";
 export class HeaderComponent implements OnInit {
 
   title = 'Restaurants vote system';
+  menuController = AppRoutesPaths.menuControllerPath;
+  voteController = AppRoutesPaths.voteControllerPath;
+  restaurantList = AppRoutesPaths.restaurantListPath;
+  dishList = AppRoutesPaths.dishListPath;
+  userController = AppRoutesPaths.userControllerPath;
+  profile = AppRoutesPaths.profilePath;
+  dateMenuList = AppRoutesPaths.dateMenuListPath;
 
   constructor(private router: Router,
               private userService: UserService) {}

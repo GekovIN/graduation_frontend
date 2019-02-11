@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MenuDish} from "../../services/menuDish";
 import {MenuService} from "../../services/menu.service";
 import {Router} from "@angular/router";
-import {MenuAddComponent} from "../menu-add/menu-add.component";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-menu-list',
@@ -11,7 +11,6 @@ import {MenuAddComponent} from "../menu-add/menu-add.component";
 })
 export class MenuListComponent implements OnInit {
 
-  static componentPath = 'menus';
   menus: Array<MenuDish>;
 
   constructor(
@@ -24,7 +23,7 @@ export class MenuListComponent implements OnInit {
   }
 
   add() {
-    this.router.navigate([MenuAddComponent.componentPath]);
+    this.router.navigate([AppRoutesPaths.menuAddPath]);
   }
 
   delete(menu: MenuDish) {
@@ -36,6 +35,6 @@ export class MenuListComponent implements OnInit {
   edit(menu: MenuDish) {
     localStorage.removeItem('editMenuId');
     localStorage.setItem('editMenuId', menu.id.toString());
-    this.router.navigate(['menu-edit']);
+    this.router.navigate([AppRoutesPaths.menuEditPath]);
   }
 }

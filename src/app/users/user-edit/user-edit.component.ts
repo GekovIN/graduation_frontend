@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
-import {UserControllerComponent} from "../user-controller/user-controller.component";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../services/user";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-user-edit',
@@ -11,8 +11,6 @@ import {User} from "../../services/user";
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-
-  static componentPath = 'user-edit';
 
   private editForm: FormGroup;
   private user: User;
@@ -32,7 +30,7 @@ export class UserEditComponent implements OnInit {
     let email = localStorage.getItem('userEditEmail');
     if (!email) {
       alert("Invalid action.");
-      this.router.navigate([UserControllerComponent.componentPath]);
+      this.router.navigate([AppRoutesPaths.userControllerPath]);
       return;
     }
 
@@ -61,7 +59,7 @@ export class UserEditComponent implements OnInit {
     this.userService.adminUpdate(user).subscribe(updated =>
     {
       console.log('### Updated user: ' + JSON.stringify(updated));
-      this.router.navigate(['/user-list'])
+      this.router.navigate([AppRoutesPaths.userListPath])
     })
   }
 

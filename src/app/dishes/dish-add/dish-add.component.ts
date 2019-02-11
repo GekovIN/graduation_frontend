@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {DishService} from "../../services/dish.service";
 import {DishListComponent} from "../dish-list/dish-list.component";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-dish-add',
@@ -11,7 +12,6 @@ import {DishListComponent} from "../dish-list/dish-list.component";
 })
 export class DishAddComponent implements OnInit {
 
-  static componentPath = 'dish-add';
   submitted = false;
 
   constructor(
@@ -37,7 +37,7 @@ export class DishAddComponent implements OnInit {
     this.submitted = true;
     this.dishService.create(this.addForm.value).subscribe(
       () => {
-        this.router.navigate([DishListComponent.componentPath])
+        this.router.navigate([AppRoutesPaths.dishListPath])
       }
     )
   }

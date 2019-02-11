@@ -5,9 +5,9 @@ import {Router} from "@angular/router";
 import {DishService} from "../../services/dish.service";
 import {first} from "rxjs/operators";
 import {MenuService} from "../../services/menu.service";
-import {MenuListComponent} from "../menu-list/menu-list.component";
 import {Restaurant} from "../../services/restaurant";
 import {RestaurantService} from "../../services/restaurant.service";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-menu-edit',
@@ -15,7 +15,6 @@ import {RestaurantService} from "../../services/restaurant.service";
   styleUrls: ['./menu-edit.component.css']
 })
 export class MenuEditComponent implements OnInit {
-  static componentPath: 'menu-edit';
 
   private restaurants: Restaurant[];
   private dishes: Dish[];
@@ -38,7 +37,7 @@ export class MenuEditComponent implements OnInit {
     let menuId = localStorage.getItem('editMenuId');
     if (!menuId) {
       alert("Invalid action.");
-      this.router.navigate([MenuListComponent.componentPath]);
+      this.router.navigate([AppRoutesPaths.menuListPath]);
       return;
     }
     this.editForm = this.formBuilder.group({
@@ -76,7 +75,7 @@ export class MenuEditComponent implements OnInit {
 
     this.menuService.update({id, date, restaurantId, dishId})
       .pipe(first())
-      .subscribe(() => this.router.navigate([MenuListComponent.componentPath]))
+      .subscribe(() => this.router.navigate([AppRoutesPaths.menuListPath]))
   }
 
 }

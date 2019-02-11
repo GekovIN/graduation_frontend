@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {UserEditComponent} from "../user-edit/user-edit.component";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-user-controller',
@@ -10,7 +10,6 @@ import {UserEditComponent} from "../user-edit/user-edit.component";
 })
 export class UserControllerComponent implements OnInit {
 
-  static componentPath = 'user-controller';
   private emailFilterForm: FormGroup;
   private email: string;
 
@@ -26,10 +25,10 @@ export class UserControllerComponent implements OnInit {
     this.email = this.emailFilterForm.controls.email.value;
     localStorage.removeItem('userEditEmail');
     localStorage.setItem('userEditEmail', this.email);
-    this.router.navigate([UserEditComponent.componentPath])
+    this.router.navigate([AppRoutesPaths.userEditPath])
   }
 
   showAll() {
-    this.router.navigate(['/user-list'])
+    this.router.navigate([AppRoutesPaths.userListPath])
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {RestaurantService} from "../../services/restaurant.service";
-import {RestaurantListComponent} from "../restaurant-list/restaurant-list.component";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-restaurant-add',
@@ -11,7 +11,6 @@ import {RestaurantListComponent} from "../restaurant-list/restaurant-list.compon
 })
 export class RestaurantAddComponent implements OnInit {
 
-  static componentPath = 'restaurant-add';
   submitted = false;
 
   constructor(
@@ -37,7 +36,7 @@ export class RestaurantAddComponent implements OnInit {
     this.submitted = true;
     this.service.create(this.addForm.value).subscribe(
       () => {
-        this.router.navigate([RestaurantListComponent.componentPath])
+        this.router.navigate([AppRoutesPaths.restaurantListPath])
       }
     )
   }

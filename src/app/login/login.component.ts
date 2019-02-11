@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
 import {DateMenuListComponent} from "../menus/date-menu-list/date-menu-list.component";
+import {AppRoutesPaths} from "../app.routes.paths";
 
 @Component({
   selector: 'app-login',
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
         //https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
         console.log('### Logged user: ' + JSON.stringify(user));
         sessionStorage.setItem('loggedUser', JSON.stringify(user));
-        this.router.navigate([DateMenuListComponent.componentPath])
+        this.router.navigate([AppRoutesPaths.dateMenuListPath])
       }, error => {
         this.userService.clearSessionStorage();
         this.handlerError(error);
@@ -68,7 +69,7 @@ export class LoginComponent implements OnInit {
         //https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
         console.log('### Logged user: ' + JSON.stringify(user));
         sessionStorage.setItem('loggedUser', JSON.stringify(user));
-        this.router.navigate([DateMenuListComponent.componentPath])
+        this.router.navigate([AppRoutesPaths.dateMenuListPath])
       });
   }
 
@@ -79,7 +80,7 @@ export class LoginComponent implements OnInit {
         //https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
         console.log('### Logged user: ' + JSON.stringify(user));
         sessionStorage.setItem('loggedUser', JSON.stringify(user));
-        this.router.navigate([DateMenuListComponent.componentPath])
+        this.router.navigate([AppRoutesPaths.dateMenuListPath])
       });
   }
 }

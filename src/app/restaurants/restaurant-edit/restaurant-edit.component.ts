@@ -3,8 +3,8 @@ import {Restaurant} from "../../services/restaurant";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {RestaurantService} from "../../services/restaurant.service";
-import {RestaurantListComponent} from "../restaurant-list/restaurant-list.component";
 import {first} from "rxjs/operators";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-restaurant-edit',
@@ -12,8 +12,6 @@ import {first} from "rxjs/operators";
   styleUrls: ['./restaurant-edit.component.css']
 })
 export class RestaurantEditComponent implements OnInit {
-
-  static componentPath = 'restaurant-edit';
 
   restaurant: Restaurant;
   editForm: FormGroup;
@@ -32,7 +30,7 @@ export class RestaurantEditComponent implements OnInit {
     let restaurantId = localStorage.getItem('editRestaurantId');
     if (!restaurantId) {
       alert("Invalid action.");
-      this.router.navigate([RestaurantListComponent.componentPath]);
+      this.router.navigate([AppRoutesPaths.restaurantListPath]);
       return;
     }
     this.editForm = this.formBuilder.group({
@@ -50,6 +48,6 @@ export class RestaurantEditComponent implements OnInit {
     this.submitted = true;
     this.service.update(this.editForm.value)
       .pipe(first())
-      .subscribe(() => this.router.navigate([RestaurantListComponent.componentPath]))
+      .subscribe(() => this.router.navigate([AppRoutesPaths.restaurantListPath]))
   }
 }

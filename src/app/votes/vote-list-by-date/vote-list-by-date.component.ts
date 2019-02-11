@@ -9,7 +9,6 @@ import {RestaurantService} from "../../services/restaurant.service";
   styleUrls: ['./vote-list-by-date.component.css']
 })
 export class VoteListByDateComponent implements OnInit {
-  static componentPath = '/votes';
 
   private date;
   private restaurants: Array<Restaurant>;

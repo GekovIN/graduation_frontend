@@ -20,10 +20,11 @@ import {UserControllerComponent} from "./users/user-controller/user-controller.c
 import {UserListComponent} from "./users/user-list/user-list.component";
 import {UserEditComponent} from "./users/user-edit/user-edit.component";
 import {UserProfileComponent} from "./users/user-profile/user-profile.component";
+import {AppRoutesPaths} from "./app.routes.paths";
 
 const routes: Routes = [
   {
-    path: 'register',
+    path: AppRoutesPaths.registerPath,
     component: RegisterComponent
   },
   {
@@ -32,84 +33,84 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'restaurants',
+    path: AppRoutesPaths.restaurantListPath,
     component: RestaurantListComponent
   },
   {
-    path: 'menu-controller',
+    path: AppRoutesPaths.menuControllerPath,
     component: MenuControllerComponent
   },
   {
-    path: 'menus',
+    path: AppRoutesPaths.menuListPath,
     component: MenuListComponent
   },
   //https://stackoverflow.com/questions/44864303/send-data-through-routing-paths-in-angular
   {
-    path: 'menus/:date',
+    path: AppRoutesPaths.menuListByDatePath,
     component: MenuListByDateComponent
   },
   {
-    path: 'menu-add',
+    path: AppRoutesPaths.menuAddPath,
     component: MenuAddComponent
   },
   {
-    path: 'menu-edit',
+    path: AppRoutesPaths.menuEditPath,
     component: MenuEditComponent
   },
   {
-    path: 'date-menus',
+    path: AppRoutesPaths.dateMenuListPath,
     component: DateMenuListComponent
   },
   {
-    path: 'restaurant-add',
+    path: AppRoutesPaths.restaurantAddPath,
     component: RestaurantAddComponent
   },
   {
-    path: 'restaurant-edit',
+    path: AppRoutesPaths.restaurantEditPath,
     component: RestaurantEditComponent
   },
   {
-    path: 'dishes',
+    path: AppRoutesPaths.dishListPath,
     component: DishListComponent
   },
   {
-    path: 'dish-add',
+    path: AppRoutesPaths.dishAddPath,
     component: DishAddComponent
   },
   {
-    path: 'dish-edit',
+    path: AppRoutesPaths.dishEditPath,
     component: DishEditComponent
   },
   {
-    path: 'vote-controller',
+    path: AppRoutesPaths.voteControllerPath,
     component: VoteControllerComponent
   },
   {
-    path: 'votes',
+    path: AppRoutesPaths.voteListPath,
     component: VoteListComponent
   },
   {
-    path: 'user-controller',
+    path: AppRoutesPaths.userControllerPath,
     component: UserControllerComponent
   },
   {
-    path: 'user-list',
+    path: AppRoutesPaths.userListPath,
     component: UserListComponent
   },
   {
-    path: 'user-edit',
+    path: AppRoutesPaths.userEditPath,
     component: UserEditComponent
   },
   {
-    path: 'profile',
+    path: AppRoutesPaths.profilePath,
     component: UserProfileComponent
   },
   {
-    path: 'votes/:date',
+    path: AppRoutesPaths.voteListByDatePath,
     component: VoteListByDateComponent
   },
   {
-    path: 'login',
+    path: AppRoutesPaths.loginPath,
     component: LoginComponent
   },
 

@@ -3,14 +3,14 @@
     <span class="mdl-layout-title">{{title}}</span>
     <div class="mdl-layout-spacer"></div>
     <nav class="mdl-navigation mdl-layout--large-screen-only">
-      <a class="mdl-navigation__link" [routerLink]="['/date-menus']">Date Menus</a>
-      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/menu-controller']">Menu controller</a>
-      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/vote-controller']">Vote controller</a>
-      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/restaurants']">Restaurants</a>
-      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/dishes']">Dishes</a>
-      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="['/user-controller']">User controller</a>
+      <a class="mdl-navigation__link" [routerLink]="[dateMenuList]">Date Menus</a>
+      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="[menuController]">Menu controller</a>
+      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="[voteController]">Vote controller</a>
+      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="[restaurantList]">Restaurants</a>
+      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="[dishList]">Dishes</a>
+      <a class="mdl-navigation__link" *ngIf="isAdmin" [routerLink]="[userController]">User controller</a>
       <a class="mdl-navigation__link" (click)="logout()">Logout</a>
-      <a class="mdl-navigation__link" [routerLink]="['/profile']">{{loggedUser?.email}}</a>
+      <a class="mdl-navigation__link" [routerLink]="[profile]">{{loggedUser?.email}}</a>
     </nav>
   </div>
 </header>

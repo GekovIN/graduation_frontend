@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
 import {VoteService} from "../../services/vote.service";
 import {Vote} from "../../services/vote";
 
@@ -10,12 +9,10 @@ import {Vote} from "../../services/vote";
 })
 export class VoteListComponent implements OnInit {
 
-  static componentPath = 'votes';
   votes: Array<Vote>;
 
   constructor(
-    private service: VoteService,
-    private router: Router) { }
+    private service: VoteService) { }
 
   ngOnInit() {
     this.service.loadAll().subscribe(

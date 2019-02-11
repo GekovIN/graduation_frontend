@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
-import {MenuListComponent} from "../menu-list/menu-list.component";
-import {MenuAddComponent} from "../menu-add/menu-add.component";
-import {MenuListByDateComponent} from "../menu-list-by-date/menu-list-by-date.component";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-menu-controller',
@@ -12,7 +10,6 @@ import {MenuListByDateComponent} from "../menu-list-by-date/menu-list-by-date.co
 })
 export class MenuControllerComponent implements OnInit {
 
-  static componentPath = 'menu-controller';
   private dateFilterForm: FormGroup;
   private date;
 
@@ -21,7 +18,6 @@ export class MenuControllerComponent implements OnInit {
 
   ) { }
 
-
   ngOnInit(): void {
     this.dateFilterForm = new FormGroup({date: new FormControl()})
   }
@@ -29,15 +25,15 @@ export class MenuControllerComponent implements OnInit {
   showByDate() {
     this.date = this.dateFilterForm.controls.date.value;
     // https://stackoverflow.com/questions/44864303/send-data-through-routing-paths-in-angular
-    this.router.navigate([MenuListByDateComponent.componentPath, this.date])
+    this.router.navigate([AppRoutesPaths.menuListByDatePath, this.date])
   }
 
   showAll() {
-    this.router.navigate([MenuListComponent.componentPath])
+    this.router.navigate([AppRoutesPaths.menuListPath])
   }
 
   add() {
-    this.router.navigate([MenuAddComponent.componentPath])
+    this.router.navigate([AppRoutesPaths.menuAddPath])
   }
 
 }

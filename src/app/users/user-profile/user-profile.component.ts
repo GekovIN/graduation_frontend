@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../services/user";
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import {UserControllerComponent} from "../user-controller/user-controller.component";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
   selector: 'app-user-profile',
@@ -53,7 +53,7 @@ export class UserProfileComponent implements OnInit {
     this.userService.profileUpdate(user).subscribe(updated =>
     {
       console.log('### Updated profile: ' + JSON.stringify(updated));
-      this.router.navigate(['/profile'])
+      this.router.navigate([AppRoutesPaths.profilePath])
     })
   }
 

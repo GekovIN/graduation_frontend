@@ -10,9 +10,7 @@ import {VoteService} from "../../services/vote.service";
 })
 export class DateMenuListComponent implements OnInit {
 
-  static componentPath = 'date-menus';
   restaurantsWithMenu: Array<Restaurant>;
-
 
   constructor(private service: RestaurantService,
               private voteService: VoteService) { }
