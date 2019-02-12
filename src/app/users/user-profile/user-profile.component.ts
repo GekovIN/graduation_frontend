@@ -50,9 +50,9 @@ export class UserProfileComponent implements OnInit {
     user.email = this.f.email.value;
     user.name = this.f.name.value;
 
-    this.userService.profileUpdate(user).subscribe(updated =>
-    {
-      console.log('### Updated profile: ' + JSON.stringify(updated));
+    this.userService.profileUpdate(user).subscribe(() => {
+      console.log('### Profile updated');
+      this.userService.updateProfileSessionStorage(user.email, user.name);
       this.router.navigate([AppRoutesPaths.profilePath])
     })
   }

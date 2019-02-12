@@ -21,5 +21,6 @@ export class AppRoutesPaths {
   static userListPath = 'user-list';
   static userEditPath = 'user-edit';
   static profilePath = 'profile';
+  static changePasswordPath = 'change-pass';
 
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
-import {DateMenuListComponent} from "../menus/date-menu-list/date-menu-list.component";
 import {AppRoutesPaths} from "../app.routes.paths";
 
 @Component({
@@ -43,10 +42,9 @@ export class LoginComponent implements OnInit {
 
     this.userService.login(this.email, this.password).subscribe(
       user => {
-        this.userService.populateSessionStorage(this.email, this.password);
+        this.userService.populateLoginSessionStorage(this.email, this.password, user);
         //https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
         console.log('### Logged user: ' + JSON.stringify(user));
-        sessionStorage.setItem('loggedUser', JSON.stringify(user));
         this.router.navigate([AppRoutesPaths.dateMenuListPath])
       }, error => {
         this.userService.clearSessionStorage();
@@ -65,10 +63,13 @@ export class LoginComponent implements OnInit {
   admin() {
     this.userService.login('admin@gmail.com', 'admin').subscribe(
       user => {
-        this.userService.populateSessionStorage('admin@gmail.com', 'admin');
+        sessionStorage.clear();
+        sessionStorage.setItem('email', 'admin@gmail.com');
+        sessionStorage.setItem('password', 'admin');
+        sessionStorage.setItem('loggedUser', JSON.stringify(user));
         //https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
         console.log('### Logged user: ' + JSON.stringify(user));
-        sessionStorage.setItem('loggedUser', JSON.stringify(user));
+        this.userService.setSessionToken();
         this.router.navigate([AppRoutesPaths.dateMenuListPath])
       });
   }
@@ -76,10 +77,13 @@ export class LoginComponent implements OnInit {
   user() {
     this.userService.login('user1@yandex.ru', 'password1').subscribe(
       user => {
-        this.userService.populateSessionStorage('user1@yandex.ru', 'password1');
+        sessionStorage.clear();
+        sessionStorage.setItem('email', 'user1@yandex.ru');
+        sessionStorage.setItem('password', 'password1');
+        sessionStorage.setItem('loggedUser', JSON.stringify(user));
         //https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
         console.log('### Logged user: ' + JSON.stringify(user));
-        sessionStorage.setItem('loggedUser', JSON.stringify(user));
+        this.userService.setSessionToken();
         this.router.navigate([AppRoutesPaths.dateMenuListPath])
       });
   }

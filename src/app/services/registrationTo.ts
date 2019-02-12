@@ -1,4 +1,4 @@
-export class LoggedUser {
+export class RegistrationTo {
 
   constructor(email: string, password: string) {
     this.email = email;

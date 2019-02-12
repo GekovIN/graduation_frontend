@@ -1,7 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../services/user.service";
-import {LoggedUser} from "../services/loggedUser";
+import {RegistrationTo} from "../services/registrationTo";
 import {User} from "../services/user";
 import {AppRoutesPaths} from "../app.routes.paths";
 

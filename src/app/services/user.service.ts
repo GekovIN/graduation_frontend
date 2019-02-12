@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {LoggedUser} from "./loggedUser";
+import {RegistrationTo} from "./registrationTo";
 import {User} from "./user";
+import {PasswordTo} from "./passwordTo";
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  register(user: LoggedUser) {
-    return this.http.post("http://localhost:8080/graduation/profile/register", user);
+  register(user: RegistrationTo) {
+    return this.http.post<User>("http://localhost:8080/graduation/profile/register", user);
   }
 
   login(email: string, password: string) {
@@ -27,7 +28,9 @@ export class UserService {
     return this.http.get<User>("http://localhost:8080/graduation/profile", { headers });
   }
 
-  populateSessionStorage(email: string, password: string) {
+  setSessionToken() {
+    let email = sessionStorage.getItem('email');
+    let password = sessionStorage.getItem('password');
     sessionStorage.setItem('token', btoa(email + ':' + password));
   }
 
@@ -63,5 +66,42 @@ export class UserService {
 
   profileUpdate(profile: User) {
     return this.http.put("http://localhost:8080/graduation/profile", profile);
+  }
+
+  changePassword(passwordTo: PasswordTo) {
+    return this.http.post("http://localhost:8080/graduation/profile/changePass", passwordTo);
+  }
+
+  updateProfileSessionStorage(email: string, name: string) {
+    this.updateSessionEmail(email);
+    this.updateSessionLoggedUser(email, name);
+  }
+
+  updateSessionEmail(email: string) {
+    sessionStorage.removeItem('email');
+    sessionStorage.setItem('email', email);
+    this.setSessionToken();
+  }
+
+  updateSessionLoggedUser(email: string, name:string) {
+    let loggedUser : User = JSON.parse(sessionStorage.getItem('loggedUser'));
+    loggedUser.email = email;
+    loggedUser.name = name;
+    sessionStorage.removeItem('loggedUser');
+    sessionStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+  }
+
+  updateSessionPassword(password: string) {
+    sessionStorage.removeItem('password');
+    sessionStorage.setItem('password', password);
+    this.setSessionToken();
+  }
+
+  populateLoginSessionStorage(email: string, password: string, user: User) {
+    sessionStorage.clear();
+    sessionStorage.setItem('email', email);
+    sessionStorage.setItem('password', password);
+    sessionStorage.setItem('loggedUser', JSON.stringify(user));
+    this.setSessionToken();
   }
 }

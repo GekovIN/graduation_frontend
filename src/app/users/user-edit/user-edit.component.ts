@@ -56,9 +56,8 @@ export class UserEditComponent implements OnInit {
     this.submitted = true;
     let user: User = this.editForm.value;
     user.roles = this.selectedRoles;
-    this.userService.adminUpdate(user).subscribe(updated =>
-    {
-      console.log('### Updated user: ' + JSON.stringify(updated));
+    this.userService.adminUpdate(user).subscribe(() => {
+      console.log('### User updated');
       this.router.navigate([AppRoutesPaths.userListPath])
     })
   }
