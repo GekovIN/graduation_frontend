@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DishAddComponent } from './dish-add.component';
+import { DishAddModalFormComponent } from './dish-add-modal-form.component';
 
-describe('DishAddComponent', () => {
-  let component: DishAddComponent;
-  let fixture: ComponentFixture<DishAddComponent>;
+describe('DishAddModalFormComponent', () => {
+  let component: DishAddModalFormComponent;
+  let fixture: ComponentFixture<DishAddModalFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DishAddComponent ]
+      declarations: [ DishAddModalFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DishAddComponent);
+    fixture = TestBed.createComponent(DishAddModalFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

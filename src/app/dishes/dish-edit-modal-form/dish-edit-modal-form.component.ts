@@ -1,9 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Dish} from "../../services/dish";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
 import {DishService} from "../../services/dish.service";
-import {AppRoutesPaths} from "../../app.routes.paths";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -22,7 +20,6 @@ export class DishEditModalFormComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
-    private router: Router,
     private service: DishService
   ) { }
 
@@ -45,7 +42,6 @@ export class DishEditModalFormComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.service.update(this.editForm.value).subscribe(() => {
-      this.router.navigate([AppRoutesPaths.dishListPath]);
       this.activeModal.close(this.editForm.value)
     })
   }

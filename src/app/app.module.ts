@@ -17,7 +17,6 @@ import { RestaurantAddComponent } from './restaurants/restaurant-add/restaurant-
 import { RestaurantEditComponent } from './restaurants/restaurant-edit/restaurant-edit.component';
 import { DishListComponent } from './dishes/dish-list/dish-list.component';
 import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
-import { DishAddComponent } from './dishes/dish-add/dish-add.component';
 import { MenuAddComponent } from './menus/menu-add/menu-add.component';
 import { MenuListComponent } from './menus/menu-list/menu-list.component';
 import { MenuEditComponent } from './menus/menu-edit/menu-edit.component';
@@ -34,6 +33,7 @@ import { UserControllerComponent } from './users/user-controller/user-controller
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { DishEditModalFormComponent } from './dishes/dish-edit-modal-form/dish-edit-modal-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DishAddModalFormComponent } from './dishes/dish-add-modal-form/dish-add-modal-form.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RestaurantAddComponent,
     RestaurantEditComponent,
     DishListComponent,
-    DishAddComponent,
     MenuAddComponent,
     MenuListComponent,
     MenuEditComponent,
@@ -63,6 +62,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserControllerComponent,
     ChangePasswordComponent,
     DishEditModalFormComponent,
+    DishAddModalFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +71,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutes,
     NgbModule
   ],
-  entryComponents: [DishEditModalFormComponent],
+  entryComponents: [
+    DishEditModalFormComponent,
+    DishAddModalFormComponent
+  ],
   providers: [UserService,
     {
       provide: HTTP_INTERCEPTORS,

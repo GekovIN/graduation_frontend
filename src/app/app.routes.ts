@@ -6,7 +6,6 @@ import {RestaurantListComponent} from "./restaurants/restaurant-list/restaurant-
 import {RestaurantAddComponent} from "./restaurants/restaurant-add/restaurant-add.component";
 import {RestaurantEditComponent} from "./restaurants/restaurant-edit/restaurant-edit.component";
 import {DishListComponent} from "./dishes/dish-list/dish-list.component";
-import {DishAddComponent} from "./dishes/dish-add/dish-add.component";
 import {MenuListComponent} from "./menus/menu-list/menu-list.component";
 import {MenuAddComponent} from "./menus/menu-add/menu-add.component";
 import {MenuEditComponent} from "./menus/menu-edit/menu-edit.component";
@@ -72,10 +71,6 @@ const routes: Routes = [
   {
     path: AppRoutesPaths.dishListPath,
     component: DishListComponent
-  },
-  {
-    path: AppRoutesPaths.dishAddPath,
-    component: DishAddComponent
   },
   {
     path: AppRoutesPaths.voteControllerPath,

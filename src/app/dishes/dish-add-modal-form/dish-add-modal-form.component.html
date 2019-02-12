@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h4 class="modal-title">Dish edit</h4>
+</div>
+
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+  <div class="modal-boy">
+    <div class="container">
+
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" formControlName="name" placeholder="Name" name="name" class="form-control" id="name"
+               [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">Name is required</div>
+          <div *ngIf="f.name.errors.minlength">Name must be at least 2 characters</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="Price">Price:</label>
+        <input formControlName="price" type="number" placeholder="price" name="price" class="form-control" id="price"
+               [ngClass]="{ 'is-invalid': submitted && f.price.errors }"/>
+        <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+          <div *ngIf="f.price.errors.required">Price is required</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal-footer">
+
+    <!--<button class="btn btn-success" [disabled]="!editForm.valid">-->
+    <!--Submit-->
+    <!--</button>    -->
+
+    <button class="btn btn-primary"> Submit </button>
+
+    <button type="button" class="btn btn-danger" (click)="activeModal.dismiss('Close clicked')">
+      Cancel
+    </button>
+
+  </div>
+</form>
