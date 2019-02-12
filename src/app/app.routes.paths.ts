@@ -13,7 +13,6 @@ export class AppRoutesPaths {
   static restaurantEditPath = 'restaurant-edit';
   static dishListPath = 'dish-list';
   static dishAddPath = 'dish-add';
-  static dishEditPath = 'dish-edit';
   static voteControllerPath = 'vote-controller';
   static voteListPath = 'vote-list';
   static voteListByDatePath = 'vote-list/:date';

@@ -1,24 +1,22 @@
-<div class="col-md-6">
-  <h2> Dishes List</h2>
-  <button class="btn btn-danger" (click)="add()"> Add Dishes</button>
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th class="hidden">id</th>
-      <th>Name</th>
-      <th>Price</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let dish of dishes">
-      <td class="hidden"></td>
-      <td>{{dish.name}}</td>
-      <td>${{dish.price/100}}</td>
-      <td>
-        <button class="btn btn-danger" (click)="delete(dish)"> Delete</button>
-        <button class="btn btn-danger" (click)="edit(dish)" style="margin-left: 20px;"> Edit</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table class="mdl-data-table mdl-js-data-table">
+  <caption class="table_caption">
+    <button class="btn btn-primary" (click)="add()" style="margin-top: 30px; margin-bottom: 10px"> Add Dish</button>
+  </caption>
+  <thead>
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Name</th>
+    <th class="mdl-data-table__cell--non-numeric">Price</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let dish of dishes">
+    <td class="mdl-data-table__cell--non-numeric">{{dish.name}}</td>
+    <td class="mdl-data-table__cell--non-numeric">${{dish.price/100}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="delete(dish)" style="margin-top: 10px"> Delete</button>
+      <button class="btn btn-primary" (click)="openEditFormModal(dish.id)" style="margin-top: 10px; margin-left: 10px"> Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

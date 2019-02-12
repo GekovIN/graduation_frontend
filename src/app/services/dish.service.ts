@@ -24,7 +24,7 @@ export class DishService {
   }
 
   getById(id: number) {
-    return this.http.get(apiUrl + id);
+    return this.http.get<Dish>(apiUrl + id);
   }
 
   update(dish: Dish) {
