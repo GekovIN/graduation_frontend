@@ -1,30 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {RestaurantService} from "../../services/restaurant.service";
-import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
-  selector: 'app-restaurant-add',
-  templateUrl: './restaurant-add.component.html',
-  styleUrls: ['./restaurant-add.component.css']
+  selector: 'app-restaurant-add-modal-form',
+  templateUrl: './restaurant-add-modal-form.component.html',
+  styleUrls: ['./restaurant-add-modal-form.component.css']
 })
-export class RestaurantAddComponent implements OnInit {
+export class RestaurantAddModalFormComponent implements OnInit {
 
+  addForm: FormGroup;
   submitted = false;
 
   constructor(
+    public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
-    private router: Router,
-    private service: RestaurantService) {}
-
-  addForm: FormGroup;
+    private service: RestaurantService
+  ) { }
 
   // convenience getter for easy access to form fields
   get f() { return this.addForm.controls; }
 
   ngOnInit() {
-
     this.addForm = this.formBuilder.group({
       id: [],
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
@@ -34,10 +32,10 @@ export class RestaurantAddComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.service.create(this.addForm.value).subscribe(
-      () => {
-        this.router.navigate([AppRoutesPaths.restaurantListPath])
-      }
-    )
+    this.service.create(this.addForm.value).subscribe(restaurant => {
+      this.activeModal.close(restaurant)
+    })
   }
+
+
 }

@@ -13,8 +13,6 @@ import { DateMenuListComponent } from './menus/date-menu-list/date-menu-list.com
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { RestaurantListComponent } from './restaurants/restaurant-list/restaurant-list.component';
-import { RestaurantAddComponent } from './restaurants/restaurant-add/restaurant-add.component';
-import { RestaurantEditComponent } from './restaurants/restaurant-edit/restaurant-edit.component';
 import { DishListComponent } from './dishes/dish-list/dish-list.component';
 import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
 import { MenuListComponent } from './menus/menu-list/menu-list.component';
@@ -34,6 +32,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DishAddModalFormComponent } from './dishes/dish-add-modal-form/dish-add-modal-form.component';
 import { MenuAddModalFormComponent } from './menus/menu-add-modal-form/menu-add-modal-form.component';
 import { MenuEditModalFormComponent } from './menus/menu-edit-modal-form/menu-edit-modal-form.component';
+import { RestaurantEditModalFormComponent } from './restaurants/restaurant-edit-modal-form/restaurant-edit-modal-form.component';
+import { RestaurantAddModalFormComponent } from './restaurants/restaurant-add-modal-form/restaurant-add-modal-form.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +44,6 @@ import { MenuEditModalFormComponent } from './menus/menu-edit-modal-form/menu-ed
     LoginComponent,
     HeaderComponent,
     RestaurantListComponent,
-    RestaurantAddComponent,
-    RestaurantEditComponent,
     DishListComponent,
     MenuListComponent,
     MenuControllerComponent,
@@ -63,6 +61,8 @@ import { MenuEditModalFormComponent } from './menus/menu-edit-modal-form/menu-ed
     DishAddModalFormComponent,
     MenuAddModalFormComponent,
     MenuEditModalFormComponent,
+    RestaurantEditModalFormComponent,
+    RestaurantAddModalFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +76,8 @@ import { MenuEditModalFormComponent } from './menus/menu-edit-modal-form/menu-ed
     DishAddModalFormComponent,
     MenuAddModalFormComponent,
     MenuEditModalFormComponent,
+    RestaurantEditModalFormComponent,
+    RestaurantAddModalFormComponent,
   ],
   providers: [UserService,
     {

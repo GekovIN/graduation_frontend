@@ -3,8 +3,6 @@ import {RegisterComponent} from "./register/register.component";
 import {DateMenuListComponent} from "./menus/date-menu-list/date-menu-list.component";
 import {LoginComponent} from "./login/login.component";
 import {RestaurantListComponent} from "./restaurants/restaurant-list/restaurant-list.component";
-import {RestaurantAddComponent} from "./restaurants/restaurant-add/restaurant-add.component";
-import {RestaurantEditComponent} from "./restaurants/restaurant-edit/restaurant-edit.component";
 import {DishListComponent} from "./dishes/dish-list/dish-list.component";
 import {MenuListComponent} from "./menus/menu-list/menu-list.component";
 import {MenuControllerComponent} from "./menus/menu-controll/menu-controller.component";
@@ -49,14 +47,6 @@ const routes: Routes = [
   {
     path: AppRoutesPaths.dateMenuListPath,
     component: DateMenuListComponent
-  },
-  {
-    path: AppRoutesPaths.restaurantAddPath,
-    component: RestaurantAddComponent
-  },
-  {
-    path: AppRoutesPaths.restaurantEditPath,
-    component: RestaurantEditComponent
   },
   {
     path: AppRoutesPaths.dishListPath,

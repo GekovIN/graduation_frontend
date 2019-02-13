@@ -6,8 +6,6 @@ export class AppRoutesPaths {
   static menuListPath = 'menu-list';
   static dateMenuListPath = 'date-menu-list';
   static restaurantListPath = 'restaurant-list';
-  static restaurantAddPath = 'restaurant-add';
-  static restaurantEditPath = 'restaurant-edit';
   static dishListPath = 'dish-list';
   static voteControllerPath = 'vote-controller';
   static voteListPath = 'vote-list';

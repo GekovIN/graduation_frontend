@@ -1,6 +1,6 @@
 <div class="col-md-6">
   <h2> Restaurants List</h2>
-  <button class="btn btn-danger" (click)="add()"> Add Restaurant</button>
+  <button class="btn btn-danger" (click)="openAddModalForm()"> Add Restaurant</button>
   <table class="table table-striped">
     <thead>
     <tr>
@@ -16,7 +16,7 @@
       <td>{{restaurant.address}}</td>
       <td>
         <button class="btn btn-danger" (click)="delete(restaurant)"> Delete</button>
-        <button class="btn btn-danger" (click)="edit(restaurant)" style="margin-left: 20px;"> Edit</button>
+        <button class="btn btn-danger" (click)="openEditModalForm(restaurant.id)" style="margin-left: 20px;"> Edit</button>
       </td>
     </tr>
     </tbody>
