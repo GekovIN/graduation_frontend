@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AppRoutesPaths} from "../../app.routes.paths";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {UserEditModalFormComponent} from "../user-edit-modal-form/user-edit-modal-form.component";
 
 @Component({
   selector: 'app-user-controller',
@@ -11,10 +13,10 @@ import {AppRoutesPaths} from "../../app.routes.paths";
 export class UserControllerComponent implements OnInit {
 
   private emailFilterForm: FormGroup;
-  private email: string;
 
   constructor(
     private router : Router,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -22,10 +24,15 @@ export class UserControllerComponent implements OnInit {
   }
 
   showByEmail() {
-    this.email = this.emailFilterForm.controls.email.value;
-    localStorage.removeItem('userEditEmail');
-    localStorage.setItem('userEditEmail', this.email);
-    this.router.navigate([AppRoutesPaths.userEditPath])
+    const email = this.emailFilterForm.controls.email.value;
+    const modalRef = this.modalService.open(UserEditModalFormComponent);
+    modalRef.componentInstance.email = email;
+    modalRef.result.then(() => {
+      console.log('### User updated');
+      this.ngOnInit();
+    }).catch((error) => {
+      console.log('### Error:' + error);
+    });
   }
 
   showAll() {

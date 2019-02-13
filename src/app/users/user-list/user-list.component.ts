@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {User} from "../../services/user";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
-import {AppRoutesPaths} from "../../app.routes.paths";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {UserEditModalFormComponent} from "../user-edit-modal-form/user-edit-modal-form.component";
 
 @Component({
   selector: 'app-user-list',
@@ -15,7 +16,8 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: UserService
+    private service: UserService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -31,10 +33,15 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  edit(user: User) {
-    localStorage.removeItem('userEditEmail');
-    localStorage.setItem('userEditEmail', user.email);
-    this.router.navigate([AppRoutesPaths.userEditPath])
+  openEditFormModal(email: string) {
+    const modalRef = this.modalService.open(UserEditModalFormComponent);
+    modalRef.componentInstance.email = email;
+    modalRef.result.then(() => {
+      console.log('### User updated');
+      this.ngOnInit();
+    }).catch((error) => {
+      console.log('### Error:' + error);
+    });
   }
 
   roles(index: number): string {

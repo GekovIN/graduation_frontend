@@ -24,9 +24,7 @@ import { VoteListByDateComponent } from './votes/vote-list-by-date/vote-list-by-
 import { RestaurantVoteComponent } from './restaurants/restaurant-vote/restaurant-vote.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
-import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserControllerComponent } from './users/user-controller/user-controller.component';
-import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { DishEditModalFormComponent } from './dishes/dish-edit-modal-form/dish-edit-modal-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DishAddModalFormComponent } from './dishes/dish-add-modal-form/dish-add-modal-form.component';
@@ -34,6 +32,8 @@ import { MenuAddModalFormComponent } from './menus/menu-add-modal-form/menu-add-
 import { MenuEditModalFormComponent } from './menus/menu-edit-modal-form/menu-edit-modal-form.component';
 import { RestaurantEditModalFormComponent } from './restaurants/restaurant-edit-modal-form/restaurant-edit-modal-form.component';
 import { RestaurantAddModalFormComponent } from './restaurants/restaurant-add-modal-form/restaurant-add-modal-form.component';
+import { UserEditModalFormComponent } from './users/user-edit-modal-form/user-edit-modal-form.component';
+import { ChangePasswordModalFormComponent } from './users/change-password-modal-form/change-password-modal-form.component';
 
 @NgModule({
   declarations: [
@@ -54,15 +54,15 @@ import { RestaurantAddModalFormComponent } from './restaurants/restaurant-add-mo
     RestaurantVoteComponent,
     UserListComponent,
     UserProfileComponent,
-    UserEditComponent,
     UserControllerComponent,
-    ChangePasswordComponent,
     DishEditModalFormComponent,
     DishAddModalFormComponent,
     MenuAddModalFormComponent,
     MenuEditModalFormComponent,
     RestaurantEditModalFormComponent,
     RestaurantAddModalFormComponent,
+    UserEditModalFormComponent,
+    ChangePasswordModalFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +78,8 @@ import { RestaurantAddModalFormComponent } from './restaurants/restaurant-add-mo
     MenuEditModalFormComponent,
     RestaurantEditModalFormComponent,
     RestaurantAddModalFormComponent,
+    UserEditModalFormComponent,
+    ChangePasswordModalFormComponent,
   ],
   providers: [UserService,
     {

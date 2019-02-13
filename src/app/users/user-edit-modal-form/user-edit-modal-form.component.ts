@@ -1,16 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../services/user.service";
-import {Router} from "@angular/router";
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {User} from "../../services/user";
-import {AppRoutesPaths} from "../../app.routes.paths";
+import {UserService} from "../../services/user.service";
 
 @Component({
-  selector: 'app-user-edit',
-  templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.css']
+  selector: 'app-user-edit-modal-form',
+  templateUrl: './user-edit-modal-form.component.html',
+  styleUrls: ['./user-edit-modal-form.component.css']
 })
-export class UserEditComponent implements OnInit {
+export class UserEditModalFormComponent implements OnInit {
+
+  @Input() email: string;
 
   private editForm: FormGroup;
   private user: User;
@@ -18,21 +19,17 @@ export class UserEditComponent implements OnInit {
   private selectedRoles: Array<string> = [];
   submitted = false;
 
+
   constructor(
-    private router: Router,
+    public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private service: UserService
   ) { }
 
+  // convenience getter for easy access to form fields
   get f() { return this.editForm.controls; }
 
   ngOnInit() {
-    let email = localStorage.getItem('userEditEmail');
-    if (!email) {
-      alert("Invalid action.");
-      this.router.navigate([AppRoutesPaths.userControllerPath]);
-      return;
-    }
 
     this.editForm = this.formBuilder.group({
       id: [],
@@ -41,7 +38,7 @@ export class UserEditComponent implements OnInit {
       enabled: ['', [Validators.required]],
     });
 
-    this.userService.loadByEmail(email).subscribe(user => {
+    this.service.loadByEmail(this.email).subscribe(user => {
       console.log('### Loaded user ' + JSON.stringify(user));
       this.user = user;
       this.selectedRoles = user.roles;
@@ -56,9 +53,8 @@ export class UserEditComponent implements OnInit {
     this.submitted = true;
     let user: User = this.editForm.value;
     user.roles = this.selectedRoles;
-    this.userService.adminUpdate(user).subscribe(() => {
-      console.log('### User updated');
-      this.router.navigate([AppRoutesPaths.userListPath])
+    this.service.adminUpdate(user).subscribe(() => {
+      this.activeModal.close(user)
     })
   }
 

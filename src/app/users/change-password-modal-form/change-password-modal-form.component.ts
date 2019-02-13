@@ -1,35 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AppRoutesPaths} from "../../app.routes.paths";
-import {Router} from "@angular/router";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {UserService} from "../../services/user.service";
 import {PasswordTo} from "../../services/passwordTo";
+import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
-  selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.css']
+  selector: 'app-change-password-modal-form',
+  templateUrl: './change-password-modal-form.component.html',
+  styleUrls: ['./change-password-modal-form.component.css']
 })
-export class ChangePasswordComponent implements OnInit {
+export class ChangePasswordModalFormComponent implements OnInit {
 
-  private passwordForm: FormGroup;
+  passwordForm: FormGroup;
   submitted = false;
 
   constructor(
-    private router: Router,
+    public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private service: UserService
   ) { }
 
+  // convenience getter for easy access to form fields
   get f() { return this.passwordForm.controls; }
 
   ngOnInit() {
-
     this.passwordForm = this.formBuilder.group({
       oldPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(32)]]
     });
-
   }
 
   onSubmit() {
@@ -37,10 +36,11 @@ export class ChangePasswordComponent implements OnInit {
 
     let passwordTo: PasswordTo = this.passwordForm.value;
 
-    this.userService.changePassword(passwordTo).subscribe(() => {
+    this.service.changePassword(passwordTo).subscribe(() => {
       console.log("### Password changed");
-      this.userService.updateSessionPassword(passwordTo.newPassword);
-      this.router.navigate([AppRoutesPaths.profilePath])
+      this.service.updateSessionPassword(passwordTo.newPassword);
+      this.activeModal.close()
     })
   }
+
 }

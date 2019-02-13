@@ -12,10 +12,8 @@ import {VoteListByDateComponent} from "./votes/vote-list-by-date/vote-list-by-da
 import {VoteControllerComponent} from "./votes/vote-controller/vote-controller.component";
 import {UserControllerComponent} from "./users/user-controller/user-controller.component";
 import {UserListComponent} from "./users/user-list/user-list.component";
-import {UserEditComponent} from "./users/user-edit/user-edit.component";
 import {UserProfileComponent} from "./users/user-profile/user-profile.component";
 import {AppRoutesPaths} from "./app.routes.paths";
-import {ChangePasswordComponent} from "./users/change-password/change-password.component";
 
 const routes: Routes = [
   {
@@ -69,10 +67,6 @@ const routes: Routes = [
     component: UserListComponent
   },
   {
-    path: AppRoutesPaths.userEditPath,
-    component: UserEditComponent
-  },
-  {
     path: AppRoutesPaths.profilePath,
     component: UserProfileComponent
   },
@@ -84,11 +78,6 @@ const routes: Routes = [
     path: AppRoutesPaths.loginPath,
     component: LoginComponent
   },
-  {
-    path: AppRoutesPaths.changePasswordPath,
-    component: ChangePasswordComponent
-  },
-
 
 ];
 

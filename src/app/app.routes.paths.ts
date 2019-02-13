@@ -12,8 +12,6 @@ export class AppRoutesPaths {
   static voteListByDatePath = 'vote-list/:date';
   static userControllerPath = 'user-controller';
   static userListPath = 'user-list';
-  static userEditPath = 'user-edit';
   static profilePath = 'profile';
-  static changePasswordPath = 'change-pass';
 
 }

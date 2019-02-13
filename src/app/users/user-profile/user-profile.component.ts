@@ -4,6 +4,8 @@ import {User} from "../../services/user";
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {AppRoutesPaths} from "../../app.routes.paths";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ChangePasswordModalFormComponent} from "../change-password-modal-form/change-password-modal-form.component";
 
 @Component({
   selector: 'app-user-profile',
@@ -19,7 +21,8 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private modalService: NgbModal
   ) { }
 
   get f() { return this.editForm.controls; }
@@ -57,4 +60,12 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
+  openChangePasswordModalForm() {
+    let modalRef = this.modalService.open(ChangePasswordModalFormComponent);
+    modalRef.result.then(() => {
+      console.log('### Profile password updated');
+    }).catch((error) => {
+      console.log('### Error: ' + error);
+    });
+  }
 }
