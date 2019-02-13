@@ -4,9 +4,6 @@ export class AppRoutesPaths {
   static loginPath = 'login';
   static menuControllerPath = 'menu-controller';
   static menuListPath = 'menu-list';
-  static menuListByDatePath = 'menu-list/:date';
-  static menuAddPath = 'menu-add';
-  static menuEditPath = 'menu-edit';
   static dateMenuListPath = 'date-menu-list';
   static restaurantListPath = 'restaurant-list';
   static restaurantAddPath = 'restaurant-add';

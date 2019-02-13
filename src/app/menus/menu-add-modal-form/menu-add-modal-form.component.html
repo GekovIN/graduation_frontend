@@ -1,0 +1,59 @@
+<div class="modal-header">
+  <h4 class="modal-title">Menu add</h4>
+</div>
+
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+  <div class="modal-boy">
+    <div class="container">
+
+      <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" formControlName="date" placeholder="Date" name="date" class="form-control" id="date"
+               [ngClass]="{ 'is-invalid': submitted && f.date.errors }"/>
+        <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+          <div *ngIf="f.date.errors.required">Date is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="restaurantId">Restaurant:</label>
+        <select class="form-control" formControlName="restaurantId" id="restaurantId" name="restaurantId">
+          <option *ngFor="let restaurant of restaurants" [ngValue]="restaurant.id">
+            {{restaurant.name}}
+          </option>
+        </select>
+        <div *ngIf="submitted && f.restaurantId.errors" class="invalid-feedback">
+          <div *ngIf="f.restaurantId.errors.required">Restaurant is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dishId">Dish:</label>
+        <select class="form-control" formControlName="dishId" id="dishId" name="dishId">
+          <option *ngFor="let dish of dishes" [ngValue]="dish.id">
+            {{dish.name + " $" + dish.price/100}}
+          </option>
+        </select>
+        <div *ngIf="submitted && f.dishId.errors" class="invalid-feedback">
+          <div *ngIf="f.dishId.errors.required">Dish is required</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal-footer">
+
+    <!--<button class="btn btn-success" [disabled]="!editForm.valid">-->
+    <!--Submit-->
+    <!--</button>    -->
+
+    <button class="btn btn-primary"> Submit </button>
+
+    <button type="button" class="btn btn-danger" (click)="activeModal.dismiss('Close clicked')">
+      Cancel
+    </button>
+
+  </div>
+</form>

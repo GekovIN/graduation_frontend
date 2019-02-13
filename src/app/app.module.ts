@@ -17,9 +17,7 @@ import { RestaurantAddComponent } from './restaurants/restaurant-add/restaurant-
 import { RestaurantEditComponent } from './restaurants/restaurant-edit/restaurant-edit.component';
 import { DishListComponent } from './dishes/dish-list/dish-list.component';
 import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
-import { MenuAddComponent } from './menus/menu-add/menu-add.component';
 import { MenuListComponent } from './menus/menu-list/menu-list.component';
-import { MenuEditComponent } from './menus/menu-edit/menu-edit.component';
 import { MenuControllerComponent } from './menus/menu-controll/menu-controller.component';
 import { MenuListByDateComponent } from './menus/menu-list-by-date/menu-list-by-date.component';
 import { VoteControllerComponent } from './votes/vote-controller/vote-controller.component';
@@ -34,6 +32,8 @@ import { ChangePasswordComponent } from './users/change-password/change-password
 import { DishEditModalFormComponent } from './dishes/dish-edit-modal-form/dish-edit-modal-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DishAddModalFormComponent } from './dishes/dish-add-modal-form/dish-add-modal-form.component';
+import { MenuAddModalFormComponent } from './menus/menu-add-modal-form/menu-add-modal-form.component';
+import { MenuEditModalFormComponent } from './menus/menu-edit-modal-form/menu-edit-modal-form.component';
 
 @NgModule({
   declarations: [
@@ -47,9 +47,7 @@ import { DishAddModalFormComponent } from './dishes/dish-add-modal-form/dish-add
     RestaurantAddComponent,
     RestaurantEditComponent,
     DishListComponent,
-    MenuAddComponent,
     MenuListComponent,
-    MenuEditComponent,
     MenuControllerComponent,
     MenuListByDateComponent,
     VoteControllerComponent,
@@ -63,6 +61,8 @@ import { DishAddModalFormComponent } from './dishes/dish-add-modal-form/dish-add
     ChangePasswordComponent,
     DishEditModalFormComponent,
     DishAddModalFormComponent,
+    MenuAddModalFormComponent,
+    MenuEditModalFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +73,9 @@ import { DishAddModalFormComponent } from './dishes/dish-add-modal-form/dish-add
   ],
   entryComponents: [
     DishEditModalFormComponent,
-    DishAddModalFormComponent
+    DishAddModalFormComponent,
+    MenuAddModalFormComponent,
+    MenuEditModalFormComponent,
   ],
   providers: [UserService,
     {

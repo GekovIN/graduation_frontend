@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {MenuDish} from "../../services/menuDish";
 import {MenuService} from "../../services/menu.service";
 import {Router} from "@angular/router";
-import {AppRoutesPaths} from "../../app.routes.paths";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {MenuAddModalFormComponent} from "../menu-add-modal-form/menu-add-modal-form.component";
+import {MenuEditModalFormComponent} from "../menu-edit-modal-form/menu-edit-modal-form.component";
 
 @Component({
   selector: 'app-menu-list',
@@ -15,7 +17,8 @@ export class MenuListComponent implements OnInit {
 
   constructor(
     private service: MenuService,
-    private router: Router) { }
+    private router: Router,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.service.loadAll().subscribe(
@@ -23,7 +26,13 @@ export class MenuListComponent implements OnInit {
   }
 
   add() {
-    this.router.navigate([AppRoutesPaths.menuAddPath]);
+    const modalRef = this.modalService.open(MenuAddModalFormComponent);
+    modalRef.result.then(created => {
+      console.log('### Menu created: ' + JSON.stringify(created));
+      this.ngOnInit();
+    }).catch((error) => {
+      console.log('### Error: ' + error);
+    });
   }
 
   delete(menu: MenuDish) {
@@ -32,9 +41,14 @@ export class MenuListComponent implements OnInit {
     })
   }
 
-  edit(menu: MenuDish) {
-    localStorage.removeItem('editMenuId');
-    localStorage.setItem('editMenuId', menu.id.toString());
-    this.router.navigate([AppRoutesPaths.menuEditPath]);
+  edit(id: number) {
+    const modalRef = this.modalService.open(MenuEditModalFormComponent);
+    modalRef.componentInstance.menuId = id;
+    modalRef.result.then(() => {
+      console.log('### Menu updated');
+      this.ngOnInit();
+    }).catch((error) => {
+      console.log('### Error: ' + error);
+    });
   }
 }

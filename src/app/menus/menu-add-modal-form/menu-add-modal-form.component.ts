@@ -1,39 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {RestaurantService} from "../../services/restaurant.service";
+import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {MenuService} from "../../services/menu.service";
 import {Restaurant} from "../../services/restaurant";
 import {Dish} from "../../services/dish";
+import {RestaurantService} from "../../services/restaurant.service";
 import {DishService} from "../../services/dish.service";
-import {MenuService} from "../../services/menu.service";
-import {AppRoutesPaths} from "../../app.routes.paths";
 
 @Component({
-  selector: 'app-menu-add',
-  templateUrl: './menu-add.component.html',
-  styleUrls: ['./menu-add.component.css']
+  selector: 'app-menu-add-modal-form',
+  templateUrl: './menu-add-modal-form.component.html',
+  styleUrls: ['./menu-add-modal-form.component.css']
 })
-export class MenuAddComponent implements OnInit {
-
-  private restaurants: Restaurant[];
-  private dishes: Dish[];
-
-  submitted = false;
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private restaurantService: RestaurantService,
-    private dishService: DishService,
-    private menuService: MenuService) {}
+export class MenuAddModalFormComponent implements OnInit {
 
   addForm: FormGroup;
+  submitted = false;
+
+  restaurants: Restaurant[];
+  dishes: Dish[];
+
+  constructor(
+    public activeModal: NgbActiveModal,
+    private formBuilder: FormBuilder,
+    private restaurantService: RestaurantService,
+    private dishService: DishService,
+    private menuService: MenuService
+  ) { }
 
   // convenience getter for easy access to form fields
   get f() { return this.addForm.controls; }
 
   ngOnInit() {
-
     this.addForm = this.formBuilder.group({
       id: [],
       date: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
@@ -52,10 +50,9 @@ export class MenuAddComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.menuService.create(this.addForm.value).subscribe(
-      () => {
-        this.router.navigate([AppRoutesPaths.menuListPath])
-      }
-    )
+    this.menuService.create(this.addForm.value).subscribe(menu => {
+      this.activeModal.close(menu)
+    })
   }
+
 }

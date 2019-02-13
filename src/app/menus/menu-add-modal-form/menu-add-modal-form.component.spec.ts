@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MenuEditComponent } from './menu-edit.component';
+import { MenuAddModalFormComponent } from './menu-add-modal-form.component';
 
-describe('MenuEditComponent', () => {
-  let component: MenuEditComponent;
-  let fixture: ComponentFixture<MenuEditComponent>;
+describe('MenuAddModalFormComponent', () => {
+  let component: MenuAddModalFormComponent;
+  let fixture: ComponentFixture<MenuAddModalFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MenuEditComponent ]
+      declarations: [ MenuAddModalFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MenuEditComponent);
+    fixture = TestBed.createComponent(MenuAddModalFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -7,8 +7,6 @@ import {RestaurantAddComponent} from "./restaurants/restaurant-add/restaurant-ad
 import {RestaurantEditComponent} from "./restaurants/restaurant-edit/restaurant-edit.component";
 import {DishListComponent} from "./dishes/dish-list/dish-list.component";
 import {MenuListComponent} from "./menus/menu-list/menu-list.component";
-import {MenuAddComponent} from "./menus/menu-add/menu-add.component";
-import {MenuEditComponent} from "./menus/menu-edit/menu-edit.component";
 import {MenuControllerComponent} from "./menus/menu-controll/menu-controller.component";
 import {MenuListByDateComponent} from "./menus/menu-list-by-date/menu-list-by-date.component";
 import {VoteListComponent} from "./votes/vote-list/vote-list.component";
@@ -45,16 +43,8 @@ const routes: Routes = [
   },
   //https://stackoverflow.com/questions/44864303/send-data-through-routing-paths-in-angular
   {
-    path: AppRoutesPaths.menuListByDatePath,
+    path: AppRoutesPaths.menuListPath + '/:date',
     component: MenuListByDateComponent
-  },
-  {
-    path: AppRoutesPaths.menuAddPath,
-    component: MenuAddComponent
-  },
-  {
-    path: AppRoutesPaths.menuEditPath,
-    component: MenuEditComponent
   },
   {
     path: AppRoutesPaths.dateMenuListPath,
